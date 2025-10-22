@@ -14,6 +14,7 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
     </style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -60,24 +61,30 @@
         <div class="row align-items-center">
           <div class="col-12 col-lg-6 text-center text-lg-start">
             <video class="hero-video w-100" autoplay muted loop playsinline>
-              <source
-                src="img/yo.webm"
-                type="video/webm"
-              />
+              <source src="img/yo.webm" type="video/webm" />
               Tu navegador no soporta la etiqueta de video.
             </video>
           </div>
 
           <div class="col-12 col-lg-6 mt-4 mt-lg-0 text-center text-lg-start">
-            <h1 class="display-6">hello, I'm Lucía</h1>
+            <h1 class="display-6" data-aos="fade-down" data-aos-duration="1000">
+              hello, I'm Lucía
+            </h1>
 
-            <p class="lead my-5">
+            <p
+              class="lead my-5"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="1000"
+            >
               an uruguayan <b>digital designer</b> and <b>frontend developer</b>
               creating digital human-centered experiences.
             </p>
 
             <div
               class="d-flex justify-content-center justify-content-lg-start gap-5"
+              data-aos="zoom-in"
+              data-aos-delay="400"
             >
               <a href="#" class="btn btn-dark">start exploring</a>
               <a href="#" class="btn btn-outline-dark">download CV</a>
@@ -87,6 +94,38 @@
       </div>
     </section>
 
+    <!-- about section -->
+    <section class="about-section">
+      <div class="container h-100 d-flex align-items-center">
+        <div class="row w-100 justify-content-center g-0">
+          <div
+            class="col-12 col-lg-8 text-center"
+            data-aos="fade-in"
+            data-aos-duration="1500"
+            data-aos-once="true"
+          >
+            <video
+              class="about-video img-fluid"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <source src="img/pecescortados.webm" type="video/mp4" />
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1200,
+        once: true,
+      });
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
