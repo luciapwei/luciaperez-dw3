@@ -1,11 +1,43 @@
+:root {
+--color-claro: #FFFFCD;
+--color-oscuro: #1E1E1E;
+}
+
+body{
+font-family: "Raleway", sans-serif;
+color: var(--color-oscuro);
+background-color: var(--color-claro);
+}
+
+/* navbar */
+
 .navbar {
-    padding: 2rem;
-    background-color: rgb(235, 234, 234);
+padding: 2rem;
+gap: 30px;
+font-size: 1em;
 }
 
 .navbar-collapse{
-    align-items: center;
-    justify-content: space-between;
+justify-content: space-between;
 }
 
-@media s
+.navbar-toggler {
+border: none; 
+background-color: transparent; 
+}
+
+.navbar-toggler:focus {
+outline: none; 
+box-shadow: none; 
+}
+
+.navbar li:hover{
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+/* hero section */
+
+.hero-section{
+    margin-top: 5rem;
+}
