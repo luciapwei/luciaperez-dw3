@@ -1,0 +1,11 @@
+.navbar {
+    padding: 2rem;
+    background-color: rgb(235, 234, 234);
+}
+
+.navbar-collapse{
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media s
