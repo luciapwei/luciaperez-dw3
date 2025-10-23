@@ -31,9 +31,14 @@ outline: none;
 box-shadow: none; 
 }
 
+.navbar li a{
+color: var(--color-oscuro);
+text-decoration: none;
+}
+
 .navbar li:hover{
-    font-weight: bold;
-    transition: 0.2s;
+font-weight: bold;
+transition: 0.2s;
 }
 
 /* hero section */
