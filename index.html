@@ -40,15 +40,13 @@
         <div class="collapse navbar-collapse" id="navbar-toggler">
           <ul class="navbar-nav d-flex justify-content-around w-100">
             <li class="nav-item">
-              <a href="#about-section">about</a>
+              <a class="nav-link" href="#about-section">about</a>
             </li>
             <li class="nav-item">
-              <a href="#">works</a>
+              <a class="nav-link" href="#works-section">works</a>
             </li>
             <li class="nav-item">
-              <a href="#"
-                >contact</a
-              >
+              <a class="nav-link" href="#contact-section">contact</a>
             </li>
             <li class="nav-item">
               <a href="#">es</a>
@@ -80,7 +78,8 @@
               data-aos-delay="200"
               data-aos-duration="1000"
             >
-              an uruguayan <b>digital designer</b> and <b>frontend developer</b>
+              an uruguayan <b>digital designer</b> and
+              <b>frontend developer</b> <br />
               creating digital human-centered experiences.
             </p>
 
@@ -90,7 +89,9 @@
               data-aos-delay="400"
             >
               <a href="#" class="btn btn-dark">start exploring</a>
-              <a href="im" class="btn btn-outline-dark">download CV</a>
+              <a href="img/cv 2025.pdf" class="btn btn-outline-dark" download
+                >download CV</a
+              >
             </div>
           </div>
         </div>
@@ -100,27 +101,41 @@
     <!-- about section -->
     <section id="about-section">
       <div class="container h-100 d-flex align-items-center">
-        <div class="row w-100 justify-content-center g-0">
+        <div class="row w-100 align-items-center g-0">
           <div
-            class="col-12 col-lg-8 text-center"
+            class="col-12 col-lg-6 mb-5 mb-lg-0 ps-5"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <p class="lead mt-4">
+              I craft websites and thoughtful user experiences,<br />
+              <b>blending clean code with visual storytelling.</b>
+            </p>
+          </div>
+
+          <div
+            class="col-12 col-lg-6 text-center"
             data-aos="fade-in"
             data-aos-duration="1500"
+            data-aos-delay="200"
             data-aos-once="true"
           >
             <video
-              class="about-video img-fluid"
+              class="about-video img-fluid w-100"
               autoplay
               muted
               loop
               playsinline
             >
-              <source src="img/peces_3_2.webm" type="video/mp4" />
+              <source src="img/peces_3.webm" type="video/webm" />
               Tu navegador no soporta el video.
             </video>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- works section -->
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
