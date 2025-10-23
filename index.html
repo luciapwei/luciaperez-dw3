@@ -68,7 +68,7 @@
           </div>
 
           <div class="col-12 col-lg-6 mt-4 mt-lg-0 text-center text-lg-start">
-            <h1 class="display-6" data-aos="fade-down" data-aos-duration="1000">
+            <h1 class="display-7" data-aos="fade-down" data-aos-duration="1000">
               hello, I'm Lucía
             </h1>
 
@@ -78,8 +78,9 @@
               data-aos-delay="200"
               data-aos-duration="1000"
             >
-              an uruguayan <b>digital designer</b> and
-              <b>frontend developer</b> <br />
+              an uruguayan
+              <span class="font-weight-boldest">digital designer</span> and
+              <span class="font-weight-boldest">frontend developer</span> <br />
               creating digital human-centered experiences.
             </p>
 
@@ -88,7 +89,7 @@
               data-aos="zoom-in"
               data-aos-delay="400"
             >
-              <a href="#" class="btn btn-dark">start exploring</a>
+              <a href="#works-section" class="btn btn-dark">start exploring</a>
               <a href="img/cv 2025.pdf" class="btn btn-outline-dark" download
                 >download CV</a
               >
@@ -103,13 +104,25 @@
       <div class="container h-100 d-flex align-items-center">
         <div class="row w-100 align-items-center g-0">
           <div
-            class="col-12 col-lg-6 mb-5 mb-lg-0 ps-5"
+            class="col-12 col-lg-5 offset-lg-1 mb-5 mb-lg-0 ps-5"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
-            <p class="lead mt-4">
+            <p class="lead mt-5">
               I craft websites and thoughtful user experiences,<br />
-              <b>blending clean code with visual storytelling.</b>
+              <span class="font-weight-boldest">
+                blending clean code with visual storytelling.</span
+              >
+              <br />
+              <br />
+              My dual approach blends UX/UI design, using
+              <span class="font-weight-boldest">Figma</span> and the
+              <span class="font-weight-boldest">Adobe Creative Suite</span>,
+              with robust code implementation. I build accessible and performant
+              interfaces using
+              <span class="font-weight-boldest">HTML, Javascript, CSS,</span>
+              and frameworks like
+              <span class="font-weight-boldest">Bootstrap.</span>
             </p>
           </div>
 
@@ -121,7 +134,7 @@
             data-aos-once="true"
           >
             <video
-              class="about-video img-fluid w-100"
+              class="about-video img-fluid w-75"
               autoplay
               muted
               loop
@@ -137,11 +150,45 @@
 
     <!-- works section -->
 
+    <section id="works-section" class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-12 col-lg-4 offset-lg-4">
+            <div
+              class="card h-100 w-100"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <div class="project-image-placeholder"></div>
+
+              <div class="card-body">
+                <h5 class="card-title project-title">
+                  tikoa ♦ habit track app and landing page
+                </h5>
+
+                <p class="card-text project-description">
+                  Tikoa is a habit tracker app designed to help users build and
+                  maintain healthy routines through motivation, visual feedback,
+                  and daily check-ins.
+                </p>
+              </div>
+
+              <div class="card-footer bg-transparent border-0 pt-0">
+                <span class="skill-tag">UI/UX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- script -->
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 1200,
-        once: true,
+        once: false,
       });
     </script>
     <script
