@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+:root {
+    --tikoa-morado: #7400B8;
+    --tikoa-verde: #00B853;
+    --tikoa-morado-oscuro:#50037E;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active {
+    background-color: var(--tikoa-morado) !important;
+    border-color: var(--tikoa-morado) !important;
+    color: white; 
+}
+
+.tikoa-logo {
+    height: 30px; 
+}
+
+/* sobre nosotros */
+
+.stars {
+    color: gold;
+    font-size: 1.5rem;
+}
+
+.testimonial-card {
+    max-width: 400px;
+    transition: transform 0.3s ease;
+    text-align: center; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(30%); 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.carousel-inner {
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+.carousel-inner {
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23673AB7'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+    width: 2.5rem; 
+    height: 2.5rem;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23673AB7'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    width: 2.5rem; 
+    height: 2.5rem;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: transparent !important; 
+    height: 100%; 
+}
+
+/* contacto y footer */
+
+.tikoa-subscribe-section {
+    background-color: var(--tikoa-morado); 
+}
+
+.tikoa-btn-subscribe {
+    background-color: white; 
+    color: var(--tikoa-morado); 
+    border: none;
+    transition: background-color 0.3s;
+}
+.tikoa-btn-subscribe:hover {
+    background-color: #f0f0f0; 
+    color: var(--tikoa-morado);
+}
+
+.tikoa-footer-dark {
+    background-color: var(--tikoa-morado-oscuro); 
+}
+
+.tikoa-modal-content .btn-close {
+    filter: invert(30%); 
+}
