@@ -182,8 +182,18 @@ border-color: var(--color-acento);
 box-shadow: 0 0 0 0.25rem rgba(111, 111, 111, 0.25); 
 }
 
-/* Título de la sección */
 #contact-section h2 {
 font-weight: 700;
 color: var(--color-acento);
+}
+
+/* modal */
+
+#suscripcionModal{
+    background-color: transparent;
+    color: var(--color-oscuro)
+}
+
+.modal-content{
+    background-color: var(--color-claro);
 }
