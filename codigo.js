@@ -24,3 +24,22 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', toggleBackToTopButton);
     }
 });
+
+//modal de success
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Intentar encontrar la Modal
+    var exitoModalElement = document.getElementById('exitoModal');
+
+    // 2. Comprobar si la Modal existe en la página actual
+    if (exitoModalElement) {
+        // Solo si estamos en la página donde existe la modal (confirmacion.html)
+        var miModal = new bootstrap.Modal(exitoModalElement);
+        miModal.show();
+
+        // Opcional: Redirige automáticamente de vuelta al inicio
+        setTimeout(function() {
+            window.location.href = '/'; 
+        }, 4000); 
+    }
+});
