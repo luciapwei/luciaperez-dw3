@@ -30,7 +30,7 @@ const nombreUsuario = urlParams.get('nombre');
 const espacioNombreModal = document.getElementById('nombreUsuario');
 
 if (nombreUsuario) {
-    espacioNombreModal.textContent = nombreUsuario; 
+    espacioNombreModal.textContent = nombreUsuario.toLowerCase; 
 } else {
     espacioNombreModal.textContent = 'estimadx'; 
 }
