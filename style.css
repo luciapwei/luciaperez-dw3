@@ -1,19 +1,45 @@
 :root {
---color-claro: #d5b9a2;
+--color-claro: #FFFFCD;
 --color-oscuro: #1E1E1E;
---color-acento: #271aa0;
+--color-acento: #1E1E1E;
 }
 
 body{
 font-family: "Raleway", sans-serif;
 color: var(--color-oscuro);
-font-weight: 600 !important;
+font-weight: 400 !important;
 background-color: var(--color-claro);
 }
 
 .font-weight-boldest {
-font-weight: 600 !important; 
+font-weight: 700 !important; 
 color: var(--color-acento);
+}
+
+/* Estilos para el botón de "Volver al Inicio" */
+
+#backToTop {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    display: none;
+    z-index: 1000; 
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    line-height: 45px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-claro);
+    background-color: var(--color-acento);
+    border: none;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+#backToTop:hover {
+    background-color: var(--color-claro);
+    transform: scale(1.1);
+    color: var(--color-oscuro);
 }
 
 /* navbar */
@@ -57,11 +83,11 @@ margin-top: 5rem;
 
 .btn-dark {
 background-color: var(--color-acento);
-border: 2px solid var(--color-acento);
+border: 3px solid var(--color-acento);
 }
 
 .btn-dark:hover {
-border: 2px solid wheat;
+border: 3px solid var(--color-claro);
 background-color: var(--color-acento);
 }
 
@@ -79,7 +105,7 @@ font-weight: 500;
 }
 
 p{
-font-weight: 600 !important;
+font-weight: 400 !important;
 }
 
 /* about section */
@@ -153,7 +179,7 @@ font-weight: 500;
 background-color: var(--color-claro);
 color: var(--color-oscuro);
 border-color: var(--color-acento); 
-box-shadow: 0 0 0 0.25rem rgba(39, 26, 160, 0.25); 
+box-shadow: 0 0 0 0.25rem rgba(111, 111, 111, 0.25); 
 }
 
 /* Título de la sección */

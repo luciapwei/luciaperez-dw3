@@ -46,10 +46,10 @@
               <a class="nav-link" href="#works-section">proyectos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact-section">contacto</a>
+              <a class="nav-link" href="#">por qué</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">por qué</a>
+              <a class="nav-link" href="#contact-section">contacto</a>
             </li>
           </ul>
         </div>
@@ -62,7 +62,7 @@
         <div class="row align-items-center">
           <div class="col-12 col-lg-6 text-center text-lg-start">
             <video class="hero-video w-100" autoplay muted loop playsinline>
-              <source src="img/yo_1.webm" type="video/webm" />
+              <source src="img/yo.webm" type="video/webm" />
               Tu navegador no soporta la etiqueta de video.
             </video>
           </div>
@@ -138,7 +138,7 @@
               loop
               playsinline
             >
-              <source src="img/peces.2_3.webm" type="video/webm" />
+              <source src="img/peces.6.webm" type="video/webm" />
               Tu navegador no soporta el video.
             </video>
           </div>
@@ -269,12 +269,13 @@
           estamos en contacto!
         </h2>
 
-        <form>
+        <form name="contacto_portafolio" method="POST" data-netlify="true">
           <div class="mb-3">
             <input 
               type="text" 
               class="form-control" 
               id="nombre" 
+              name="nombre"
               placeholder="nombre..."
               required 
             />
@@ -285,6 +286,7 @@
               type="email" 
               class="form-control" 
               id="email" 
+              name="email"
               placeholder="email..."
               required 
             />
@@ -295,6 +297,7 @@
               class="form-control" 
               id="consulta" 
               rows="5" 
+              name="mensaje"
               placeholder="mensaje..."
               required
             ></textarea>
@@ -312,8 +315,17 @@
   </div>
 </section>
 
+<a 
+  href="#top" 
+  id="backToTop" 
+  class="btn btn-dark rounded-circle shadow-lg" 
+  aria-label="Volver al inicio"
+>
+  &#9650; </a>
 
     <!-- script -->
+
+    <script src="codigo.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
