@@ -100,7 +100,6 @@ padding: 1rem;
 }
 
 .project-image-placeholder {
-height: 250px; 
 width: 100%;
 background-color: var(--color-claro);
 margin-bottom: 0 !important;
