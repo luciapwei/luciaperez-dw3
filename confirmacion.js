@@ -21,16 +21,3 @@ document.querySelector("#cruz").addEventListener("click", ()=>{
     window.location.href = "index.html";
 })
 
-//nombre personal
-
-const urlParams = new URLSearchParams(window.location.search);
-
-const nombreUsuario = urlParams.get('nombre');
-
-const espacioNombreModal = document.getElementById('nombreUsuario');
-
-if (nombreUsuario) {
-    espacioNombreModal.textContent = nombreUsuario.toLowerCase; 
-} else {
-    espacioNombreModal.textContent = 'estimadx'; 
-}
