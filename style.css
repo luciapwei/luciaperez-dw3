@@ -1,16 +1,19 @@
 :root {
---color-claro: #FFFFCD;
+--color-claro: #d5b9a2;
 --color-oscuro: #1E1E1E;
+--color-acento: #271aa0;
 }
 
 body{
 font-family: "Raleway", sans-serif;
 color: var(--color-oscuro);
+font-weight: 600 !important;
 background-color: var(--color-claro);
 }
 
 .font-weight-boldest {
 font-weight: 600 !important; 
+color: var(--color-acento);
 }
 
 /* navbar */
@@ -40,15 +43,43 @@ color: var(--color-oscuro);
 text-decoration: none;
 }
 
-.navbar li:hover{
+.navbar li a:hover{
 font-weight: bold;
 transition: 0.2s;
+color: var(--color-oscuro);
 }
 
 /* hero section */
 
 .hero-section{
 margin-top: 5rem;
+}
+
+.btn-dark {
+background-color: var(--color-acento);
+border: 2px solid var(--color-acento);
+}
+
+.btn-dark:hover {
+border: 2px solid wheat;
+background-color: var(--color-acento);
+}
+
+.btn-outline-dark{
+color: var(--color-oscuro);
+border-color: var(--color-oscuro);
+font-weight: 500;
+}
+
+.btn-outline-dark:hover{
+
+background-color: var(--color-acento);
+border-color: var(--color-acento);
+font-weight: 500;
+}
+
+p{
+font-weight: 600 !important;
 }
 
 /* about section */
@@ -69,31 +100,31 @@ padding: 1rem;
 }
 
 .project-image-placeholder {
-height: 350px; 
+height: 250px; 
 width: 100%;
 background-color: var(--color-claro);
-margin-bottom: 1.5rem;
+margin-bottom: 0 !important;
 }
 
 .project-title {
-font-size: 1rem;
+font-size: 1.1rem;
 font-weight: 600;
-margin-bottom: 0.5rem;
+margin-bottom: 0.9rem;
 }
 
 .skill-tag {
 display: inline-block;
 padding: 0.25rem 0.75rem;
 font-size: 0.95rem;
-font-weight: 600;
-text-transform: uppercase;
+font-weight: 700;
 color: var(--color-oscuro);
 line-height: 1;
 }
 
 .project-description {
-font-size: 0.95rem;
-color: var(--color-oscuro)
+font-size: 0.9rem;
+color: var(--color-oscuro);
+font-weight: 500 !important;
 }
 
 #works-section .card {
@@ -104,4 +135,30 @@ box-shadow: none;
 #works-section .card:hover {
 transform: translateY(-6px) rotate(-0.9deg); 
 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.152); 
+}
+
+/* contact section*/
+
+.form-control {
+
+background-color: transparent; 
+border: 1px solid var(--color-oscuro); 
+border-radius: 0.25rem; 
+padding: 0.75rem 1rem;
+color: var(--color-oscuro);
+font-weight: 500;
+}
+
+
+.form-control:focus {
+background-color: var(--color-claro);
+color: var(--color-oscuro);
+border-color: var(--color-acento); 
+box-shadow: 0 0 0 0.25rem rgba(39, 26, 160, 0.25); 
+}
+
+/* Título de la sección */
+#contact-section h2 {
+font-weight: 700;
+color: var(--color-acento);
 }
