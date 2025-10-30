@@ -83,24 +83,24 @@ margin-top: 5rem;
 
 .btn-dark {
 background-color: var(--color-acento);
-border: 3px solid var(--color-acento);
+border: 2px solid var(--color-acento);
 }
 
 .btn-dark:hover {
-border: 3px solid var(--color-claro);
+border: 2px solid var(--color-claro);
 background-color: var(--color-acento);
 }
 
 .btn-outline-dark{
 color: var(--color-oscuro);
-border-color: var(--color-oscuro);
+border: 2px solid var(--color-oscuro);
 font-weight: 500;
 }
 
 .btn-outline-dark:hover{
-
-background-color: var(--color-acento);
-border-color: var(--color-acento);
+color: var(--color-claro);
+background-color: var(--color-oscuro);
+border: 2px solid var(--color-oscuro);
 font-weight: 500;
 }
 
@@ -196,4 +196,10 @@ color: var(--color-acento);
 
 .modal-content{
     background-color: var(--color-claro);
+}
+
+/* footer */
+
+.footer-icon{
+    color: var(--color-oscuro);
 }
