@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
     const aboutSection = document.getElementById('about-section');
 
-    // Comprobamos si la sección de trabajos existe
+
     if (aboutSection && backToTopButton) {
     
     function toggleBackToTopButton() {
