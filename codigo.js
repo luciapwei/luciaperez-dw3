@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const aboutSectionTop = aboutSection.offsetTop; 
         
-        if (window.scrollY > aboutSectionTop) {
+        if (window.scrollY >= aboutSectionTop) {
         backToTopButton.style.display = 'block';
         } else {
         backToTopButton.style.display = 'none'; 

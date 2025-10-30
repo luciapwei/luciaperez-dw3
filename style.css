@@ -16,7 +16,7 @@ font-weight: 700 !important;
 color: var(--color-acento);
 }
 
-/* Estilos para el botón de "Volver al Inicio" */
+/* estilos para el botón de "volver al inicio" */
 
 #backToTop {
     position: fixed; 
@@ -132,22 +132,21 @@ margin-bottom: 0 !important;
 }
 
 .project-title {
-font-size: 1.1rem;
+font-size: 0.9rem;
 font-weight: 600;
 margin-bottom: 0.9rem;
 }
 
 .skill-tag {
 display: inline-block;
-padding: 0.25rem 0.75rem;
-font-size: 0.95rem;
+font-size: 0.7rem;
 font-weight: 700;
 color: var(--color-oscuro);
 line-height: 1;
 }
 
 .project-description {
-font-size: 0.9rem;
+font-size: 0.7rem;
 color: var(--color-oscuro);
 font-weight: 500 !important;
 }
@@ -161,6 +160,7 @@ box-shadow: none;
 transform: translateY(-6px) rotate(-0.9deg); 
 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.152); 
 }
+
 
 /* contact section*/
 
