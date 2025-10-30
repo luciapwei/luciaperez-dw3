@@ -1,0 +1,1126 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Serif+SC:wght@200..900&display=swap');
+
+:root {
+  --color-texto: #1a1a1a;
+  --fondo: #fff;
+  --acento: #8f8f8f;
+  --fuente: 'Manrope', sans-serif;
+  --fuente-dos: "Noto Serif SC", serif;
+  --transicion: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fuente);
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--fondo);
+  overflow-x: hidden;
+}
+
+.navbar{
+  background-color: transparent !important;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-texto);
+  transition: color var(--transicion);
+}
+
+a:hover {
+  color: var(--acento);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+  background-color: transparent;
+  border-bottom: none;
+  z-index: 10;
+}
+
+.logo img {
+  max-height: 80px;
+  width: auto;
+  display: block;
+}
+
+/* Estilos para los SVGs dentro de los botones/enlaces */
+.icono {
+  width: 24px;
+  /* Aumentado a 24px para que se vea bien dentro de un contenedor de 40px */
+  height: 24px;
+  display: block;
+  position: relative;
+  /* stroke: white;  Si quieres que el SVG herede el color, usa currentColor y define color en el padre */
+
+}
+
+
+
+
+
+
+/* El contenedor principal de los iconos (tu nav) */
+.iconos {
+  display: flex;
+  /* Habilita Flexbox */
+  align-items: center;
+  /* Alinea verticalmente los ítems (nav-icon-item, input) */
+  gap: 20px;
+  /* Espacio entre los ítems del nav */
+  /* REMOVIDAS: width, height, background, border, cursor, padding, color, font-size */
+  /* Esas propiedades no pertenecen al contenedor, sino a los ítems individuales */
+  position: relative;
+  /* <--- Muy importante */
+  overflow: visible;
+  /* <--- Asegura que no recorte hijos absolutos */
+  z-index: 50;
+}
+
+/* NUEVA CLASE: Estilos para cada elemento de icono (button o a) */
+.nav-icon-item {
+  display: flex;
+  /* Para centrar el SVG dentro de este botón/enlace */
+  justify-content: center;
+  align-items: center;
+
+  width: 20px;
+  /* Tamaño fijo para CADA ÍCONO-BOTÓN */
+  height: 20px;
+  /* Tamaño fijo para CADA ÍCONO-BOTÓN */
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: white;
+  /* Color del texto/stroke del SVG si usas currentColor en el SVG */
+  font-size: 0.9em;
+  /* Si necesitas tamaño de fuente para texto dentro de ellos */
+}
+
+
+#inputBuscador {
+  color: white;
+  display: none;
+  font-family: var(--fuente);
+  background-color: transparent;
+  font-size: 0.7em;
+  border: none;
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  border-bottom: 1px solid transparent;
+  transition: width 0.3s ease-in-out,
+    /* Anima el ancho */
+    opacity 0.3s ease-in-out,
+    /* Anima la opacidad */
+    padding 0.3s ease-in-out,
+    /* Anima el padding */
+    border-bottom-color 0.3s ease-in-out;
+  /* Anima el color del borde inferior */
+}
+
+#contenedorSugerencias {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#sugerencias button.guardar {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  padding: 10px 12px;
+  font-size: 0.9em;
+  color: white;
+  font-family: var(--fuente);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+
+
+#sugerencias {
+  display: none;
+  /* se activa desde JS */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 240px;
+  z-index: 9999;
+  /* alto alto, para que quede al frente */
+  background-color: rgb(147, 146, 142);
+  /* fondo negro con transparencia */
+  color: white;
+  font-family: var(--fuente);
+  font-size: 0.8em;
+  font-weight: 300;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+
+  padding: 8px 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+  max-height: 280px;
+  /* espacio suficiente para muchas sugerencias */
+  overflow-y: auto;
+  /* scroll vertical si se pasa */
+
+
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* cuando esté activo (desde JS), que se muestre */
+#sugerencias.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* estilo interno de cada sugerencia (opcional si usás <p>, <div> o <li>) */
+#sugerencias div {
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#sugerencias div:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#inputBuscador::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  /* Un blanco semi-transparente para el placeholder */
+}
+
+#inputBuscador:focus {
+  outline: none;
+  /* Elimina el contorno azul o naranja predeterminado del navegador */
+  border: none;
+  /* Asegura que no haya ningún borde completo al enfocar */
+  border-bottom: 1px solid white;
+  /* Mantén el borde inferior blanco deseado al enfocar */
+}
+
+#navLateral {
+  display: none;
+  font-family: var(--fuente-dos);
+  background-color: rgba(255, 255, 255, 0.118);
+  padding: 50px;
+  color: rgb(147, 146, 142);
+  font-size: 0.9em;
+  position: fixed;
+  top: 0;
+  right: -250px;
+
+  width: 250px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: left 0.3s ease;
+  z-index: 999;
+  opacity: 0;
+  transition: right 0.3s ease, opacity 0.3s ease;
+
+}
+
+.listaNav {
+  font-family: var(--fuente-dos);
+}
+
+.listaNav button {
+  border: none;
+  background-color: transparent;
+  font-size: 0.8em;
+  transition: 0.2s;
+}
+
+.listaNav button:hover {
+  border: none;
+  color: rgb(140, 135, 110);
+  ;
+}
+
+#navLateral a {
+  color: rgb(140, 135, 110);
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: 0.3s;
+}
+
+#navLateral a:hover {
+  color: rgb(87, 83, 63);
+  text-decoration: none;
+  font-size: 0.95em;
+
+}
+
+#navLateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#navLateral li {
+  margin-bottom: 20px;
+}
+
+#navLateral.activo {
+  right: 0;
+  opacity: 1;
+}
+
+#ventanaModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#desplegarCarrito {
+  position: fixed;
+  top: 30;
+  left: 50%;
+  width: 40%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+
+.modal-contenido {
+  background-color: white;
+  font-family: var(--fuente-dos);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-contenido h2 {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+
+.inputVentanaModal {
+  padding: 4px 12px;
+  box-sizing: border-box;
+  font-size: 0.6em;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.inputVentanaModal:focus {
+  outline: none;
+}
+
+.inputGrupo {
+  display: flex;
+  align-items: center;
+  /* Centra verticalmente la label y el mensaje */
+  gap: 10px;
+  /* Espacio entre la label y el mensaje */
+  margin-bottom: 5px;
+  /* Opcional: Espacio entre este grupo y el input de abajo */
+}
+
+.inputGrupo p {
+  font-size: 0.5em;
+  font-weight: 600;
+  color: rgb(214, 37, 37);
+  border-radius: 20%;
+  padding: 4px;
+}
+
+
+
+.botonIniciar {
+  font-family: var(--fuente);
+  background-color: #4a4a4a;
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.6em;
+  letter-spacing: 1px;
+  transition: all var(--transicion);
+  align-items: center;
+  margin-top: 12px;
+}
+
+.botonIniciar:disabled {
+  background-color: #b0b0b0;
+  color: #848484;
+  border: none;
+  cursor: not-allowed;
+}
+
+.botonIniciar:disabled:hover {
+  background-color: #b0b0b0;
+  color: #848484;
+  border: none;
+  cursor: not-allowed;
+}
+
+.botonCrear {
+  font-family: var(--fuente);
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #fff;
+  color: #4a4a4a;
+  font-weight: 400;
+  font-size: 0.6em;
+  letter-spacing: 1px;
+  transition: all var(--transicion);
+  align-items: center;
+  margin-top: 8px;
+}
+
+.botonCrear:hover {
+  background-color: #fff;
+  color: var(--color-texto);
+}
+
+.botonIniciar:hover {
+  background-color: #fff;
+  color: var(--color-texto);
+}
+
+.encabezado-modal {
+  display: flex;
+  /* ¡Hace que los elementos se pongan en fila! */
+  justify-content: space-between;
+  /* Empuja un elemento a la izquierda y otro a la derecha */
+  align-items: center;
+  /* Centra los elementos verticalmente */
+}
+
+#botonCruz {
+
+  background-color: transparent;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+
+  border: none;
+  padding: 0;
+  display: inline;
+  /* Para alinear el SVG y texto si hubiera */
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+/* ----- ESTILO PARA ACHICAR LA CRUZ SVG ----- */
+#botonCruz svg {
+  /* Define el tamaño de la cruz SVG */
+  width: 12px;
+  /* Por ejemplo, 20 píxeles de ancho */
+  height: 12px;
+  /* Y 20 píxeles de alto */
+  /* Opcional: Cambiar el color del trazo (líneas de la cruz) */
+  stroke: #333;
+  /* Un gris oscuro, por ejemplo */
+  /* Opcional: Espacio si hubiera texto junto a la cruz */
+  margin-right: 5px;
+}
+
+
+/* Esto es lo que organiza el formulario en columnas */
+.modal-contenido form {
+  display: flex;
+  margin-top: 12px;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.modal-contenido button,
+.modal-contenido label {
+  width: auto;
+  box-sizing: border-box;
+  font-size: 0.6em;
+}
+
+.modal-contenido label {
+  margin-right: 0;
+  padding-right: 5px;
+  margin-right: 0;
+}
+
+
+
+#registrarse {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: none;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.bannerCatalogo {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 16vh;
+  background-color: rgb(176, 176, 176);
+}
+
+.slider {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+
+}
+
+
+.slider img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.textoBanner {
+  font-size: 0.7em;
+  font-family: var(--fuente-dos);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  padding-right: 80px;
+  padding-left: 50px;
+}
+
+.boton,
+.botonGuardar {
+  font-family: var(--fuente);
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 400;
+  font-size: 0.7em;
+  letter-spacing: 1px;
+  transition: all var(--transicion);
+  align-items: center;
+  margin-top: 20px;
+}
+
+.botonAñadir {
+  background-color: transparent;
+  font-family: var(--fuente);
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #8b8b8b;
+  color: #262626;
+  font-weight: 400;
+  font-size: 0.6em;
+  letter-spacing: 1px;
+  transition: all var(--transicion);
+  align-items: center;
+  margin-top: 20px;
+}
+
+.botonAñadir:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: var(--color-texto);
+}
+
+.boton:hover {
+  background-color: #fff;
+  color: var(--color-texto);
+}
+
+/* article por date */
+
+#galeria-container {
+  overflow: hidden;
+  background-color: transparent;
+  padding: 20px 0;
+  margin-bottom: 24px;
+}
+
+
+.galeria-slider {
+  display: flex;
+  width: max-content;
+  animation: deslizar 50s linear infinite;
+}
+
+.articulo {
+  flex: 0 0 auto;
+  font-family: var(--fuente-dos);
+  font-size: 0.6em;
+  width: 200px;
+  margin: 0 10px;
+  background-color: transparent;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.articulo:hover {
+  transform: scale(1.05);
+}
+
+.articulo img {
+  width: 100%;
+  height: 248px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+}
+
+.articulo .info {
+  padding: 10px;
+}
+
+.articulo  {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.articulo .titulo {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.articulo .boton {
+  color: #000;
+}
+
+.articulo .precio {
+  font-weight: 600;
+}
+
+@keyframes deslizar {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* termina */
+
+.destacados {
+  padding: 80px 80px;
+  text-align: left;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  /* This ensures padding is included in width calculations */
+}
+
+/* Estilo general del área de ampliación */
+#ampliacion {
+  display: flex;
+  margin-top: 300px;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  /* Increased from 900px to allow more products per row */
+  margin: 50px auto;
+  padding: 0 20px;
+  /* Added horizontal padding instead of the section */
+  justify-content: center;
+  box-sizing: border-box;
+
+  padding: 40px 20px;
+  background-color: var(--fondo);
+}
+
+/* Contenedor principal del producto ampliado */
+#productoAmpliado {
+  display: flex;
+  font-family: var(--fuente-dos);
+  color: black;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.195);
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#selectTalles {
+  display: block;
+  font-family: var(--fuente-dos);
+  font-size: 0.7em;
+  outline: none;
+  width: 16%;
+}
+
+/* Imagen principal */
+.imagen-grande {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.columna-imagen {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  /* espacio entre miniaturas y la imagen */
+}
+
+
+.columna-detalles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Miniaturas */
+.galeria-miniaturas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Estilos para el contenedor principal de los breadcrumbs */
+.breadcrumb {
+  list-style: none;
+  /* Quita los puntos de la lista */
+  padding: 10px 15px;
+  background-color: none;
+  border-radius: 5px;
+  margin-top: 32px;
+  margin-left: 12px;
+  display: flex;
+  /* Para que los elementos estén en línea */
+  flex-wrap: wrap;
+  /* Permite que los elementos se envuelvan si la pantalla es pequeña */
+  font-family: var(--fuente-dos);
+  font-size: 0.7em;
+}
+
+/* Estilos para cada elemento (link o texto) del breadcrumb */
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilos para el separador entre elementos */
+.breadcrumb li+li::before {
+  content: '>';
+  /* Usamos un separador con pseudo-elemento */
+  margin: 0 8px;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+/* Estilos para los enlaces */
+.breadcrumb a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.breadcrumb a:hover {
+  text-decoration: none;
+}
+
+/* Estilo para el último elemento (la página actual) */
+.breadcrumb .active {
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.galeria-miniaturas img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.galeria-miniaturas img:hover {
+
+  transform: scale(1.05);
+}
+
+/* Detalles del producto */
+.detalles-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detalles-producto h2 {
+  font-size: 1.5em;
+  margin: 0;
+  color: #333;
+}
+
+.detalles-producto .precio {
+  font-size: 1em;
+  font-weight: bold;
+  color: #313131;
+}
+
+.detalles-producto .info-secundaria {
+  font-size: 0.7em;
+  color: #666;
+}
+
+.detalles-producto .descripcion {
+  margin-top: 0;
+  font-size: 0.7em;
+  line-height: 1.6;
+  text-align: center;
+  color: #444;
+}
+
+
+.destacadosCatalogo {
+  padding: 80px 80px;
+  /* Changed from 80px 80px to remove horizontal padding */
+  text-align: left;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  /* This ensures padding is included in width calculations */
+}
+
+.breadcrumb ul {
+  list-style: none;
+  display: flex;
+  gap: 5px;
+  padding: 0;
+  margin: 40px;
+  font-size: 14px;
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb li {
+  color: #666;
+}
+
+/* Contenedor principal de los productos */
+#productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* ESTILOS DE CADA TARJETA DE PRODUCTO */
+.producto {
+  width: 300px;
+  /* O un porcentaje como width: 30%; si hay una cuadrícula */
+  padding: 15px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+  background-color: transparent;
+
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+
+}
+
+/* IMAGEN DEL PRODUCTO (ahora ocupa toda la tarjeta) */
+.producto img {
+  max-width: 100%;
+  height: auto;
+  /* Ocupa el 100% de la altura de su padre (.producto) */
+  object-fit: fill;
+  /* Recorta la imagen para que cubra sin distorsionarse */
+  margin-bottom: 0;
+  border-radius: 8px;
+
+  border: none;
+}
+
+/* CONTENEDOR DEL TEXTO Y BOTÓN (se superpone a la imagen) */
+.info-producto {
+  font-size: 0.6em;
+  font-family: var(--fuente-dos);
+  position: absolute;
+  /* Posicionamiento absoluto sobre el .producto */
+  border-radius: 8px;
+
+  width: 90%;
+  /* Ocupa todo el ancho */
+  height: 93%;
+  /* Ocupa toda la altura */
+  padding: 15px 20px;
+  /* Padding interno para el texto y botón */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* Alinea el contenido a la parte inferior del overlay */
+  align-items: center;
+  /* Alinea el contenido a la izquierda */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fondo negro semi-transparente */
+  color: white;
+  /* Color del texto blanco */
+  /*   box-sizing: border-box; */
+  /* Incluye el padding en el ancho/alto del overlay */
+  opacity: 0;
+  /* Invisible por defecto */
+  transition: opacity var(--transition-speed);
+  /* Transición suave al aparecer */
+}
+
+.producto:hover .info-producto {
+  opacity: 1;
+  /* Se vuelve visible al pasar el mouse por encima del producto */
+}
+
+#selectProductos {
+  font-family: var(--fuente-dos);
+  font-size: 0.55em;
+  padding: 0.6em;
+  border: 1px solid grey;
+  border-radius: 4px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  margin-left: 32px;
+}
+
+#selectProductos:focus {
+  outline: none;
+  /* Quita el contorno azul/naranja por defecto al enfocar */
+  border-color: none;
+  /* Borde de color azul al enfocar (puedes usar tu color de acento) */
+  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+  /* Sombra sutil al enfocar */
+}
+
+/* ESTILOS DEL BOTÓN DENTRO DEL OVERLAY */
+.producto .info-producto .boton {
+  border-color: white;
+  /* Borde del botón blanco */
+  color: white;
+  /* Texto del botón blanco */
+  background-color: transparent;
+  /* Fondo transparente para el botón */
+}
+
+.producto .info-producto .boton:hover {
+  background-color: white;
+  /* Fondo blanco al hacer hover en el botón */
+  color: black;
+  /* Texto oscuro al hacer hover en el botón */
+}
+
+/* ESTILOS DE TÍTULOS Y PÁRRAFOS DENTRO DEL OVERLAY */
+.producto h3 {
+  font-family: var(--secondary-font);
+  font-size: 1.4em;
+  /* Aumentado para que sea más legible */
+  margin-bottom: 8px;
+  margin-top: 0;
+  color: inherit;
+  /* Hereda el color blanco del .info-producto */
+}
+
+.producto p {
+  /* Este párrafo no está en tu HTML actual de info-producto */
+  font-size: 1.1em;
+  color: inherit;
+  /* Hereda el color blanco del .info-producto */
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+
+
+
+
+.footer {
+  background-color: #1a1a1a;
+  color: #f8f8f8;
+  padding: 60px 50px 30px;
+  font-size: 0.7em;
+  margin-top: 92px;
+}
+
+.footer-columnas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h3 {
+  font-family: var(--fuente-dos);
+  font-size: 0.8em;
+  margin-bottom: 20px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #ccc;
+  transition: color var(--transicion);
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter input[type="email"] {
+  padding: 12px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 0.8em;
+  width: 100%;
+}
+
+.newsletter input[type="email"]::placeholder {
+  color: #aaa;
+}
+
+.newsletterBoton {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 200;
+  transition: 0.2s;
+}
+
+.newsletterBoton:hover {
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+.creditos {
+  font-size: 0.6em;
+}
+
+#numeroCarrito {
+  display: none;
+  font-family: var(--fuente-dos);
+  font-size: 6px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  top: 28px;
+  right: 104px;
+}

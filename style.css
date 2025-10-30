@@ -132,7 +132,7 @@ margin-bottom: 0 !important;
 }
 
 .project-title {
-font-size: 0.9rem;
+font-size: 1rem;
 font-weight: 600;
 margin-bottom: 0.9rem;
 }
@@ -146,7 +146,7 @@ line-height: 1;
 }
 
 .project-description {
-font-size: 0.7rem;
+font-size: 0.8rem;
 color: var(--color-oscuro);
 font-weight: 500 !important;
 }

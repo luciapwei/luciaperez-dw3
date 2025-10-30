@@ -1,0 +1,86 @@
+:root {
+--color-claro: #FFFFCD;
+--color-oscuro: #1E1E1E;
+--color-acento: #1E1E1E;
+}
+
+body{
+font-family: "Raleway", sans-serif;
+color: var(--color-oscuro);
+font-weight: 400 !important;
+background-color: var(--color-claro);
+}
+
+.font-weight-boldest {
+font-weight: 700 !important; 
+color: var(--color-acento);
+}
+
+/* navbar */
+
+.navbar {
+padding: 2rem;
+gap: 30px;
+font-size: 1em;
+}
+
+.navbar-collapse{
+justify-content: space-between;
+}
+
+.navbar-toggler {
+border: none; 
+background-color: transparent; 
+}
+
+.navbar-toggler:focus {
+outline: none; 
+box-shadow: none; 
+}
+
+.navbar li a{
+color: var(--color-oscuro);
+text-decoration: none;
+}
+
+.navbar li a:hover{
+font-weight: bold;
+transition: 0.2s;
+color: var(--color-oscuro);
+}
+
+/* porque */
+
+.card-canvas-border {
+    border: 1px solid var(--color-oscuro) !important; 
+    background-color: transparent;
+}
+
+.card-canvas-header {
+    background-color: #333333 !important; /* Color de fondo de la cabecera */
+    color: #fefeda !important; /* Color del texto/icono en la cabecera */
+    font-weight: 600;
+}
+
+.card-body .text-danger {
+    /* Ejemplo: Un marrón suave y corporativo, en lugar de rojo chillón */
+    color: var(--color-oscuro) !important; 
+}
+
+/* Color para los iconos Creadores de Alegría (la "Estrella") */
+.card-body .text-info {
+    /* Ejemplo: Tu color acento principal para llamar la atención */
+    color: var(--color-oscuro) !important; 
+}
+
+/* Color para los iconos de Aliviadores (el "Check") */
+.card-body .text-success {
+    /* Ejemplo: El verde de tu marca o un acento que represente crecimiento */
+    color: var(--color-oscuro) !important; 
+}
+
+/* footer */
+
+.footer-icon{
+color: var(--color-oscuro);
+}

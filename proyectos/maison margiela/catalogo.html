@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Margiela</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <section class="bannerCatalogo">
+
+        <header class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logopng.png" alt="logo">
+                </a>
+            </div>
+
+            <nav class="iconos">
+
+                <div id="contenedorSugerencias"> <button id="botonLupa" class="nav-icon-item">
+                        <svg class="icono" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="white">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                        </svg>
+                    </button>
+                    <input type="text" value="" id="inputBuscador" placeholder="Buscar...">
+                    <div id="sugerencias"></div>
+                </div>
+
+                <button id="botonUser" class="nav-icon-item"><svg class="icono" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg></button>
+                <div id="ventanaModal">
+                    <div class="modal-contenido">
+                        <div class="encabezado-modal">
+                            <h2>Inicio de sesión</h2><button id="botonCruz"><svg xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                    class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <form>
+                            <div class="inputGrupo">
+                                <label for="email">Email:</label>
+                                <p id="mensajeEmail"></p>
+                            </div>
+                            <input type="email" class="inputVentanaModal" id="email" name="email" placeholder="Email..."
+                                autofocus>
+                            <div class="inputGrupo"> <label for="contraseña">Contraseña:</label>
+                                <p id="mensajeContraseña"></p>
+                            </div>
+
+                            <input type="password" class="inputVentanaModal" id="contraseña" name="password"
+                                placeholder="Contraseña...">
+
+                            <div id="registrarse">
+                                <div class="inputGrupo"><label for="contraseña">Repetir contraseña:</label>
+                                    <p id="mensajeContraseña2"></p>
+                                </div>
+                                <input type="password" class="inputVentanaModal" id="contraseña2" name="password2"
+                                    placeholder="Contraseña...">
+
+                                <div class="inputGrupo"><label for="nombre">Nombre:</label>
+                                    <p id="mensajeNombre"></p>
+                                </div>
+                                <input type="text" class="inputVentanaModal" id="nombre" name="nombre"
+                                    placeholder="Nombre...">
+
+                                <div class="inputGrupo"><label for="apellido">Apellido:</label>
+                                    <p id="mensajeApellido"></p>
+                                </div>
+                                <input type="text" class="inputVentanaModal" id="apellido" name="apellido"
+                                    placeholder="Apellido...">
+
+                                <div class="inputGrupo"><label for="celular">Celular:</label>
+                                    <p id="mensajeCelular"></p>
+                                </div>
+                                <input type="text" id="celular" class="inputVentanaModal" name="celular"
+                                    placeholder="Celular...">
+
+                            </div>
+
+                            <button type="button" class="botonIniciar">Iniciar sesión</button>
+                            <button type="button" class="botonCrear">Crear cuenta </button>
+
+                        </form>
+                    </div>
+                </div>
+
+                <button id="botonCarrito" class="nav-icon-item"> <svg class="icono" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg> </button>
+
+
+
+                <button id="botonHamburguesa" class="nav-icon-item" aria-label="Menú">
+                    <svg class="icono" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="white">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+                <div id="overlay">
+                    <div id="navLateral">
+                        <!-- nav lateral dinamico -->
+                    </div>
+            </nav>
+            </div>
+        </header>
+
+    </section>
+
+
+    <section class="destacados">
+
+        <nav class="breadcrumb"></nav>
+
+        <select id="selectProductos">
+            <option value="Todos" selected>Todos</option>
+            <option value="Destacados">Destacados</option>
+            <option value="PrecioMenor">Menor precio</option>
+            <option value="PrecioMayor">Mayor precio</option>
+        </select>
+
+        <div id="productos">
+            <!-- productos dinamicos -->
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-columnas">
+            <div class="footer-col">
+                <h3>Servicio al Cliente</h3>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Envíos y Devoluciones</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <ul>
+                    <li><a href="#"><i></i> Instagram</a></li>
+                    <li><a href="#"><i></i> Facebook</a></li>
+                    <li><a href="#"><i></i> Twitter</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <form class="newsletter">
+                    <input type="email" placeholder="Correo electrónico">
+                    <button type="submit" class="newsletterBoton">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+        <div class="creditos">
+            <p>&copy; 2025 Maison Margiela. Rediseño por Lucía Pérez.</p>
+        </div>
+    </footer>
+
+    <script src="datos.js"></script>
+    <script src="funcionesComun.js"></script>
+    <script src="catalogo.js"></script>
+
+</body>
+
+</html>
