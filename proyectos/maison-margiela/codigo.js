@@ -22,19 +22,23 @@ const mostrarProductosRandom = () => {
     let copiaDestacados = productosDestacados.slice();
     let contador = 0;
 
-    while (copiaDestacados.length > 0 && contador < 6) {
+    while (copiaDestacados.length > 0 && contador < 8) {
         let posRandom = Math.floor(Math.random() * copiaDestacados.length);
         let productoSacado = copiaDestacados.splice(posRandom, 1)[0];
 
-        productosMostrar += `<div class="producto">
+        productosMostrar += `
+    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+        <div class="producto">
              <img src="${productoSacado.img[1]}" alt="foto producto">
              <div class="info-producto">
-              <h4>Destacados del mes</h4>
-             <h3>${productoSacado.nombre}</h3>
-              <p>$${productoSacado.precio}</p>
-             <button class="boton guardar" id="${productoSacado.id}">Ver más</button>
+                 <h6>destacados</h6>
+                 <h6>${productoSacado.nombre}</h6>
+                 <p>$${productoSacado.precio}</p>
+                 <button class="boton guardar" id="${productoSacado.id}">Ver más</button>
              </div>
-             </div>`;
+        </div>
+    </div>
+`;
 
         contador++;
     }

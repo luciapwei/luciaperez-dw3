@@ -8,7 +8,8 @@ let catalogoAmpliar = productos.filter((elemento) => elemento.categoria == idEnv
 const mostrarArray = (array, colocar) => {
     productosMostrar = "";
     array.forEach(element => {
-        productosMostrar += `<div class="producto">
+        productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
+        <div class="producto">
              <img src="${element.img[0]}" alt="foto producto">
              <div class="info-producto">
               <h4>Destacados del mes</h4>
@@ -16,6 +17,7 @@ const mostrarArray = (array, colocar) => {
               <p>$${element.precio}</p>
              <button class="boton" id="${element.id}">Ver más</button>
              </div>
+             </div> 
              </div>`;
 
 

@@ -7,12 +7,21 @@
   --fuente: 'Manrope', sans-serif;
   --fuente-dos: "Noto Serif SC", serif;
   --transicion: 0.3s ease;
+  /* Definimos un tamaño base para usar rem */
+  font-size: 16px; 
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html, body {
+  /* ¡Aplica el control de desbordamiento tanto al HTML como al Body! */
+  overflow-x: hidden; 
+  /* Si el contenido aún parece forzar el ancho, añade esto al body */
+  width: 100%;
 }
 
 body {
@@ -22,11 +31,8 @@ body {
   line-height: 1.6;
   color: var(--color-texto);
   background-color: var(--fondo);
-  overflow-x: hidden;
-}
-
-.navbar{
-  background-color: transparent !important;
+  /* Usamos vw para asegurar que no haya scroll horizontal no deseado */
+  overflow-x: hidden; 
 }
 
 a {
@@ -57,71 +63,55 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 50px;
+  /* De 0px 50px a rem */
+  padding: 0rem 3.125rem; 
   background-color: transparent;
   border-bottom: none;
   z-index: 10;
 }
 
 .logo img {
-  max-height: 80px;
+  /* De max-height: 80px a rem */
+  max-height: 5rem; 
   width: auto;
   display: block;
 }
 
 /* Estilos para los SVGs dentro de los botones/enlaces */
 .icono {
-  width: 24px;
-  /* Aumentado a 24px para que se vea bien dentro de un contenedor de 40px */
-  height: 24px;
+  /* De 24px a rem */
+  width: 1.5rem;
+  height: 1.5rem;
   display: block;
   position: relative;
-  /* stroke: white;  Si quieres que el SVG herede el color, usa currentColor y define color en el padre */
-
 }
-
-
-
-
-
 
 /* El contenedor principal de los iconos (tu nav) */
 .iconos {
   display: flex;
-  /* Habilita Flexbox */
   align-items: center;
-  /* Alinea verticalmente los ítems (nav-icon-item, input) */
-  gap: 20px;
-  /* Espacio entre los ítems del nav */
-  /* REMOVIDAS: width, height, background, border, cursor, padding, color, font-size */
-  /* Esas propiedades no pertenecen al contenedor, sino a los ítems individuales */
+  /* De 20px a rem */
+  gap: 1.25rem; 
   position: relative;
-  /* <--- Muy importante */
   overflow: visible;
-  /* <--- Asegura que no recorte hijos absolutos */
   z-index: 50;
 }
 
 /* NUEVA CLASE: Estilos para cada elemento de icono (button o a) */
 .nav-icon-item {
   display: flex;
-  /* Para centrar el SVG dentro de este botón/enlace */
   justify-content: center;
   align-items: center;
-
-  width: 20px;
-  /* Tamaño fijo para CADA ÍCONO-BOTÓN */
-  height: 20px;
-  /* Tamaño fijo para CADA ÍCONO-BOTÓN */
-
+  /* De 20px a rem */
+  width: 1.25rem; 
+  height: 1.25rem;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   color: white;
-  /* Color del texto/stroke del SVG si usas currentColor en el SVG */
-  font-size: 0.9em;
-  /* Si necesitas tamaño de fuente para texto dentro de ellos */
+  /* De 0.9em a rem (relativo a su padre) */
+  font-size: 0.9rem; 
 }
 
 
@@ -130,20 +120,14 @@ img {
   display: none;
   font-family: var(--fuente);
   background-color: transparent;
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
   border: none;
   width: 0;
   opacity: 0;
   padding: 0;
   border-bottom: 1px solid transparent;
-  transition: width 0.3s ease-in-out,
-    /* Anima el ancho */
-    opacity 0.3s ease-in-out,
-    /* Anima la opacidad */
-    padding 0.3s ease-in-out,
-    /* Anima el padding */
-    border-bottom-color 0.3s ease-in-out;
-  /* Anima el color del borde inferior */
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 }
 
 #contenedorSugerencias {
@@ -157,8 +141,10 @@ img {
   text-align: left;
   background-color: transparent;
   border: none;
-  padding: 10px 12px;
-  font-size: 0.9em;
+  /* De 10px 12px a rem */
+  padding: 0.625rem 0.75rem; 
+  /* De 0.9em a rem */
+  font-size: 0.9rem; 
   color: white;
   font-family: var(--fuente);
   cursor: pointer;
@@ -169,31 +155,30 @@ img {
 
 #sugerencias {
   display: none;
-  /* se activa desde JS */
   position: absolute;
   top: 100%;
   left: 0;
-  width: 240px;
+  /* De 240px a rem */
+  width: 15rem; 
   z-index: 9999;
-  /* alto alto, para que quede al frente */
   background-color: rgb(147, 146, 142);
-  /* fondo negro con transparencia */
   color: white;
   font-family: var(--fuente);
-  font-size: 0.8em;
+  /* De 0.8em a rem */
+  font-size: 0.8rem; 
   font-weight: 300;
 
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-top: none;
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 0.375rem 0.375rem; /* De 6px a rem */
 
-  padding: 8px 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  /* De 8px 12px a rem */
+  padding: 0.5rem 0.75rem; 
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3); /* De 8px 20px a rem */
 
-  max-height: 280px;
-  /* espacio suficiente para muchas sugerencias */
+  /* De 280px a rem */
+  max-height: 17.5rem; 
   overflow-y: auto;
-  /* scroll vertical si se pasa */
 
 
   opacity: 0;
@@ -208,7 +193,8 @@ img {
 
 /* estilo interno de cada sugerencia (opcional si usás <p>, <div> o <li>) */
 #sugerencias div {
-  padding: 6px 8px;
+  /* De 6px 8px a rem */
+  padding: 0.375rem 0.5rem; 
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
@@ -219,31 +205,32 @@ img {
 
 #inputBuscador::placeholder {
   color: rgba(255, 255, 255, 0.7);
-  /* Un blanco semi-transparente para el placeholder */
 }
 
 #inputBuscador:focus {
   outline: none;
-  /* Elimina el contorno azul o naranja predeterminado del navegador */
   border: none;
-  /* Asegura que no haya ningún borde completo al enfocar */
   border-bottom: 1px solid white;
-  /* Mantén el borde inferior blanco deseado al enfocar */
 }
 
 #navLateral {
   display: none;
   font-family: var(--fuente-dos);
   background-color: rgba(255, 255, 255, 0.118);
-  padding: 50px;
+  /* De 50px a rem */
+  padding: 3.125rem; 
   color: rgb(147, 146, 142);
-  font-size: 0.9em;
+  /* De 0.9em a rem */
+  font-size: 0.9rem; 
   position: fixed;
   top: 0;
-  right: -250px;
+  /* De -250px a rem */
+  right: -15.625rem; 
 
-  width: 250px;
-  height: 100%;
+  /* De 250px a rem */
+  width: 15.625rem; 
+  /* De 100% a vh */
+  height: 100vh; 
   background-color: rgba(255, 255, 255, 0.8);
   transition: left 0.3s ease;
   z-index: 999;
@@ -259,7 +246,8 @@ img {
 .listaNav button {
   border: none;
   background-color: transparent;
-  font-size: 0.8em;
+  /* De 0.8em a rem */
+  font-size: 0.8rem; 
   transition: 0.2s;
 }
 
@@ -272,14 +260,16 @@ img {
 #navLateral a {
   color: rgb(140, 135, 110);
   text-decoration: none;
-  font-size: 0.9em;
+  /* De 0.9em a rem */
+  font-size: 0.9rem; 
   transition: 0.3s;
 }
 
 #navLateral a:hover {
   color: rgb(87, 83, 63);
   text-decoration: none;
-  font-size: 0.95em;
+  /* De 0.95em a rem */
+  font-size: 0.95rem; 
 
 }
 
@@ -290,7 +280,8 @@ img {
 }
 
 #navLateral li {
-  margin-bottom: 20px;
+  /* De 20px a rem */
+  margin-bottom: 1.25rem; 
 }
 
 #navLateral.activo {
@@ -303,8 +294,10 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  /* De 100vw a 100% */
+  width: 100%; 
+  /* De 100vh a 100% */
+  height: 100%; 
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
@@ -314,8 +307,10 @@ img {
   position: fixed;
   top: 30;
   left: 50%;
-  width: 40%;
-  height: 80%;
+  /* Mantenemos % para anchos de contenedores grandes */
+  width: 40%; 
+  /* Mantenemos % para alturas de contenedores grandes */
+  height: 80%; 
   justify-content: center;
   align-items: center;
   background-color: red;
@@ -324,24 +319,32 @@ img {
 .modal-contenido {
   background-color: white;
   font-family: var(--fuente-dos);
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  /* De 30px a rem */
+  padding: 1.875rem; 
+  /* De 12px a rem */
+  border-radius: 0.75rem; 
+  /* De 400px a rem */
+  max-width: 25rem; 
+  /* Mantenemos % */
+  width: 90%; 
+  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.3); /* De 15px a rem */
 }
 
 .modal-contenido h2 {
-  font-size: 0.8em;
+  /* De 0.8em a rem */
+  font-size: 0.8rem; 
   margin-bottom: 0;
 }
 
 .inputVentanaModal {
-  padding: 4px 12px;
+  /* De 4px 12px a rem */
+  padding: 0.25rem 0.75rem; 
   box-sizing: border-box;
-  font-size: 0.6em;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
   width: 100%;
-  margin-bottom: 8px;
+  /* De 8px a rem */
+  margin-bottom: 0.5rem; 
 }
 
 .inputVentanaModal:focus {
@@ -351,19 +354,20 @@ img {
 .inputGrupo {
   display: flex;
   align-items: center;
-  /* Centra verticalmente la label y el mensaje */
-  gap: 10px;
-  /* Espacio entre la label y el mensaje */
-  margin-bottom: 5px;
-  /* Opcional: Espacio entre este grupo y el input de abajo */
+  /* De 10px a rem */
+  gap: 0.625rem; 
+  /* De 5px a rem */
+  margin-bottom: 0.3125rem; 
 }
 
 .inputGrupo p {
-  font-size: 0.5em;
+  /* De 0.5em a rem */
+  font-size: 0.5rem; 
   font-weight: 600;
   color: rgb(214, 37, 37);
   border-radius: 20%;
-  padding: 4px;
+  /* De 4px a rem */
+  padding: 0.25rem; 
 }
 
 
@@ -372,15 +376,18 @@ img {
   font-family: var(--fuente);
   background-color: #4a4a4a;
   display: inline-block;
-  padding: 4px 12px;
+  /* De 4px 12px a rem */
+  padding: 0.25rem 0.75rem; 
   border: 1px solid #fff;
   color: #fff;
   font-weight: 400;
-  font-size: 0.6em;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
   letter-spacing: 1px;
   transition: all var(--transicion);
   align-items: center;
-  margin-top: 12px;
+  /* De 12px a rem */
+  margin-top: 0.75rem; 
 }
 
 .botonIniciar:disabled {
@@ -400,15 +407,18 @@ img {
 .botonCrear {
   font-family: var(--fuente);
   display: inline-block;
-  padding: 4px 12px;
+  /* De 4px 12px a rem */
+  padding: 0.25rem 0.75rem; 
   border: 1px solid #fff;
   color: #4a4a4a;
   font-weight: 400;
-  font-size: 0.6em;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
   letter-spacing: 1px;
   transition: all var(--transicion);
   align-items: center;
-  margin-top: 8px;
+  /* De 8px a rem */
+  margin-top: 0.5rem; 
 }
 
 .botonCrear:hover {
@@ -423,26 +433,22 @@ img {
 
 .encabezado-modal {
   display: flex;
-  /* ¡Hace que los elementos se pongan en fila! */
   justify-content: space-between;
-  /* Empuja un elemento a la izquierda y otro a la derecha */
   align-items: center;
-  /* Centra los elementos verticalmente */
 }
 
 #botonCruz {
 
   background-color: transparent;
-  width: 16px;
-  height: 16px;
+  /* De 16px a rem */
+  width: 1rem; 
+  height: 1rem;
   display: flex;
   justify-content: center;
 
   border: none;
   padding: 0;
   display: inline;
-  /* Para alinear el SVG y texto si hubiera */
-
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -451,25 +457,23 @@ img {
 
 /* ----- ESTILO PARA ACHICAR LA CRUZ SVG ----- */
 #botonCruz svg {
-  /* Define el tamaño de la cruz SVG */
-  width: 12px;
-  /* Por ejemplo, 20 píxeles de ancho */
-  height: 12px;
-  /* Y 20 píxeles de alto */
-  /* Opcional: Cambiar el color del trazo (líneas de la cruz) */
+  /* De 12px a rem */
+  width: 0.75rem; 
+  height: 0.75rem;
   stroke: #333;
-  /* Un gris oscuro, por ejemplo */
-  /* Opcional: Espacio si hubiera texto junto a la cruz */
-  margin-right: 5px;
+  /* De 5px a rem */
+  margin-right: 0.3125rem; 
 }
 
 
 /* Esto es lo que organiza el formulario en columnas */
 .modal-contenido form {
   display: flex;
-  margin-top: 12px;
+  /* De 12px a rem */
+  margin-top: 0.75rem; 
   flex-direction: column;
-  gap: 4px;
+  /* De 4px a rem */
+  gap: 0.25rem; 
 }
 
 
@@ -477,12 +481,14 @@ img {
 .modal-contenido label {
   width: auto;
   box-sizing: border-box;
-  font-size: 0.6em;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
 }
 
 .modal-contenido label {
   margin-right: 0;
-  padding-right: 5px;
+  /* De 5px a rem */
+  padding-right: 0.3125rem; 
   margin-right: 0;
 }
 
@@ -497,7 +503,8 @@ img {
 .banner {
   position: relative;
   width: 100%;
-  height: 100vh;
+  /* De 100vh a vh (correcto) */
+  height: 100vh; 
   overflow: hidden;
   background-color: #000;
 }
@@ -507,33 +514,42 @@ img {
   z-index: 100;
   top: 0;
   width: 100%;
-  height: 16vh;
+  /* De 16vh a vh (correcto) */
+  height: 16vh; 
   background-color: rgb(176, 176, 176);
 }
 
-.slider {
+#slider {
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  /* Usamos vw (viewport width) para garantizar el 100% de la ventana, ignorando padding/margins del body */
+  width: 100vw; 
+  /* Usamos vh (viewport height) para definir una altura atractiva y responsiva */
+  height: 100vh; /* O el valor que desees, por ejemplo, 75vh o 100vh */
+  
+  /* Asegura que el slider empiece desde el borde izquierdo */
+  margin-left: calc(50% - 50vw); 
+  
+  /* Puedes mantener tus estilos de centrado si los necesitas */
   justify-content: center;
   align-items: center;
   background-color: #000;
-
+  
+  /* Si tu JS usa el ID, el selector sería #slider, no .slider */
 }
 
 
-.slider img {
-  max-width: 100%;
-  height: 100%;
-  object-fit: cover;
+#slider img {
+  width: 100%;
+  height: 100%; 
+  /* Esto es clave para que la imagen no se distorsione y cubra el área */
+  object-fit: cover; 
   display: block;
+  max-width: none; /* Asegura que no haya límites de ancho de la imagen */
 }
 
 .textoBanner {
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
   font-family: var(--fuente-dos);
   position: absolute;
   top: 0;
@@ -548,38 +564,46 @@ img {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 2;
-  padding-right: 80px;
-  padding-left: 50px;
+  /* De 80px y 50px a rem */
+  padding-right: 5rem; 
+  padding-left: 3.125rem;
 }
 
 .boton,
 .botonGuardar {
   font-family: var(--fuente);
   display: inline-block;
-  padding: 8px 16px;
+  /* De 8px 16px a rem */
+  padding: 0.5rem 1rem; 
   border: 1px solid #fff;
   color: #fff;
   font-weight: 400;
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
   letter-spacing: 1px;
   transition: all var(--transicion);
   align-items: center;
-  margin-top: 20px;
+  /* De 20px a rem */
+  margin-top: 1.25rem; 
+  text-decoration: none;
 }
 
 .botonAñadir {
   background-color: transparent;
   font-family: var(--fuente);
   display: inline-block;
-  padding: 8px 16px;
+  /* De 8px 16px a rem */
+  padding: 0.5rem 1rem; 
   border: 1px solid #8b8b8b;
   color: #262626;
   font-weight: 400;
-  font-size: 0.6em;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
   letter-spacing: 1px;
   transition: all var(--transicion);
   align-items: center;
-  margin-top: 20px;
+  /* De 20px a rem */
+  margin-top: 1.25rem; 
 }
 
 .botonAñadir:hover {
@@ -598,8 +622,10 @@ img {
 #galeria-container {
   overflow: hidden;
   background-color: transparent;
-  padding: 20px 0;
-  margin-bottom: 24px;
+  /* De 20px 0 a rem */
+  padding: 1.25rem 0; 
+  /* De 24px a rem */
+  margin-bottom: 1.5rem; 
 }
 
 
@@ -612,12 +638,16 @@ img {
 .articulo {
   flex: 0 0 auto;
   font-family: var(--fuente-dos);
-  font-size: 0.6em;
-  width: 200px;
-  margin: 0 10px;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
+  /* De 200px a rem */
+  width: 12.5rem; 
+  /* De 0 10px a rem */
+  margin: 0 0.625rem; 
   background-color: transparent;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* De 12px a rem */
+  border-radius: 0.75rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* De 4px 8px a rem */
   transition: transform 0.3s;
 }
 
@@ -627,26 +657,32 @@ img {
 
 .articulo img {
   width: 100%;
-  height: 248px;
+  /* De 248px a rem */
+  height: 15.5rem; 
   object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  /* De 12px a rem */
+  border-top-left-radius: 0.75rem; 
+  border-top-right-radius: 0.75rem;
 
 }
 
 .articulo .info {
-  padding: 10px;
+  /* De 10px a rem */
+  padding: 0.625rem; 
 }
 
-.articulo  {
+.articulo {
   font-weight: 400;
-  margin-bottom: 5px;
+  /* De 5px a rem */
+  margin-bottom: 0.3125rem; 
 }
 
 .articulo .titulo {
-  font-size: 1em;
+  /* De 1em a rem */
+  font-size: 1rem; 
   font-weight: bold;
-  margin-bottom: 5px;
+  /* De 5px a rem */
+  margin-bottom: 0.3125rem; 
 }
 
 .articulo .boton {
@@ -670,29 +706,33 @@ img {
 /* termina */
 
 .destacados {
-  padding: 80px 80px;
+  /* De 80px 80px a rem */
+  padding: 5rem 5rem; 
   text-align: left;
   background-color: #fff;
   width: 100%;
   box-sizing: border-box;
-  /* This ensures padding is included in width calculations */
 }
 
 /* Estilo general del área de ampliación */
 #ampliacion {
   display: flex;
-  margin-top: 300px;
-  gap: 10px;
+  /* De 300px a rem */
+  margin-top: 18.75rem; 
+  /* De 10px a rem */
+  gap: 0.625rem; 
   width: 100%;
-  max-width: 1200px;
-  /* Increased from 900px to allow more products per row */
-  margin: 50px auto;
-  padding: 0 20px;
-  /* Added horizontal padding instead of the section */
+  /* De 1200px a rem */
+  max-width: 75rem; 
+  /* De 50px a rem */
+  margin: 3.125rem auto; 
+  /* De 0 20px a rem */
+  padding: 0 1.25rem; 
   justify-content: center;
   box-sizing: border-box;
 
-  padding: 40px 20px;
+  /* De 40px 20px a rem */
+  padding: 2.5rem 1.25rem; 
   background-color: var(--fondo);
 }
 
@@ -703,37 +743,45 @@ img {
   color: black;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 40px;
-  padding: 24px;
+  /* De 40px a rem */
+  gap: 2.5rem; 
+  /* De 24px a rem */
+  padding: 1.5rem; 
   background-color: rgba(255, 255, 255, 0.195);
-  border-radius: 12px;
-  max-width: 1200px;
+  /* De 12px a rem */
+  border-radius: 0.75rem; 
+  /* De 1200px a rem */
+  max-width: 75rem; 
   margin: auto;
 }
 
 #selectTalles {
   display: block;
   font-family: var(--fuente-dos);
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
   outline: none;
-  width: 16%;
+  /* Mantenemos % */
+  width: 16%; 
 }
 
 /* Imagen principal */
 .imagen-grande {
   width: 100%;
-  max-height: 400px;
+  /* De 400px a rem */
+  max-height: 25rem; 
   object-fit: contain;
 }
 
 .columna-imagen {
   flex: 1;
-  min-width: 300px;
+  /* De 300px a rem */
+  min-width: 18.75rem; 
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 1rem;
-  /* espacio entre miniaturas y la imagen */
+  /* De 1rem a rem (correcto) */
+  gap: 1rem; 
 }
 
 
@@ -741,32 +789,37 @@ img {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* De 12px a rem */
+  gap: 0.75rem; 
 }
 
 /* Miniaturas */
 .galeria-miniaturas {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 12px;
+  /* De 10px a rem */
+  gap: 0.625rem; 
+  /* De 12px a rem */
+  margin-top: 0.75rem; 
 }
 
 /* Estilos para el contenedor principal de los breadcrumbs */
 .breadcrumb {
   list-style: none;
-  /* Quita los puntos de la lista */
-  padding: 10px 15px;
+  /* De 10px 15px a rem */
+  padding: 0.625rem 0.9375rem; 
   background-color: none;
-  border-radius: 5px;
-  margin-top: 32px;
-  margin-left: 12px;
+  /* De 5px a rem */
+  border-radius: 0.3125rem; 
+  /* De 32px a rem */
+  margin-top: 2rem; 
+  /* De 12px a rem */
+  margin-left: 0.75rem; 
   display: flex;
-  /* Para que los elementos estén en línea */
   flex-wrap: wrap;
-  /* Permite que los elementos se envuelvan si la pantalla es pequeña */
   font-family: var(--fuente-dos);
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
 }
 
 /* Estilos para cada elemento (link o texto) del breadcrumb */
@@ -778,8 +831,8 @@ img {
 /* Estilos para el separador entre elementos */
 .breadcrumb li+li::before {
   content: '>';
-  /* Usamos un separador con pseudo-elemento */
-  margin: 0 8px;
+  /* De 0 8px a rem */
+  margin: 0 0.5rem; 
   color: #6c757d;
   font-weight: bold;
 }
@@ -801,10 +854,12 @@ img {
 }
 
 .galeria-miniaturas img {
-  width: 80px;
-  height: 80px;
+  /* De 80px a rem */
+  width: 5rem; 
+  height: 5rem;
   object-fit: cover;
-  border-radius: 6px;
+  /* De 6px a rem */
+  border-radius: 0.375rem; 
 
   cursor: pointer;
   transition: transform 0.2s;
@@ -819,29 +874,34 @@ img {
 .detalles-producto {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* De 12px a rem */
+  gap: 0.75rem; 
 }
 
 .detalles-producto h2 {
-  font-size: 1.5em;
+  /* De 1.5em a rem */
+  font-size: 1.5rem; 
   margin: 0;
   color: #333;
 }
 
 .detalles-producto .precio {
-  font-size: 1em;
+  /* De 1em a rem */
+  font-size: 1rem; 
   font-weight: bold;
   color: #313131;
 }
 
 .detalles-producto .info-secundaria {
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
   color: #666;
 }
 
 .detalles-producto .descripcion {
   margin-top: 0;
-  font-size: 0.7em;
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
   line-height: 1.6;
   text-align: center;
   color: #444;
@@ -849,22 +909,24 @@ img {
 
 
 .destacadosCatalogo {
-  padding: 80px 80px;
-  /* Changed from 80px 80px to remove horizontal padding */
+  /* De 80px 80px a rem */
+  padding: 5rem 5rem; 
   text-align: left;
   background-color: #fff;
   width: 100%;
   box-sizing: border-box;
-  /* This ensures padding is included in width calculations */
 }
 
 .breadcrumb ul {
   list-style: none;
   display: flex;
-  gap: 5px;
+  /* De 5px a rem */
+  gap: 0.3125rem; 
   padding: 0;
-  margin: 40px;
-  font-size: 14px;
+  /* De 40px a rem */
+  margin: 2.5rem; 
+  /* De 14px a rem */
+  font-size: 0.875rem; 
 }
 
 .breadcrumb li a {
@@ -881,23 +943,14 @@ img {
 }
 
 /* Contenedor principal de los productos */
-#productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
-  gap: 10px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto 0 auto;
-  padding: 0 20px;
-  justify-content: center;
-  box-sizing: border-box;
-}
+
 
 /* ESTILOS DE CADA TARJETA DE PRODUCTO */
 .producto {
-  width: 300px;
-  /* O un porcentaje como width: 30%; si hay una cuadrícula */
-  padding: 15px;
+  /* De 300px a rem. Considerar el cambio en #productos. Lo dejo en rem */
+  width: 15rem; 
+  /* De 15px a rem */
+  padding: 0.9375rem; 
   height: auto;
   position: relative;
   overflow: hidden;
@@ -911,7 +964,8 @@ img {
 }
 
 .producto:hover {
-  transform: translateY(-5px);
+  /* De -5px a rem */
+  transform: translateY(-0.3125rem); 
 
 }
 
@@ -919,106 +973,94 @@ img {
 .producto img {
   max-width: 100%;
   height: auto;
-  /* Ocupa el 100% de la altura de su padre (.producto) */
   object-fit: fill;
-  /* Recorta la imagen para que cubra sin distorsionarse */
   margin-bottom: 0;
-  border-radius: 8px;
+  /* De 8px a rem */
+  border-radius: 0.5rem; 
+
 
   border: none;
 }
 
 /* CONTENEDOR DEL TEXTO Y BOTÓN (se superpone a la imagen) */
 .info-producto {
-  font-size: 0.6em;
+  /* De 0.6em a rem */ 
   font-family: var(--fuente-dos);
   position: absolute;
-  /* Posicionamiento absoluto sobre el .producto */
-  border-radius: 8px;
+  /* De 8px a rem */
+  border-radius: 0.5rem; 
 
-  width: 90%;
-  /* Ocupa todo el ancho */
-  height: 93%;
-  /* Ocupa toda la altura */
-  padding: 15px 20px;
-  /* Padding interno para el texto y botón */
+  width: 88%;
+  height: 91%;
+  /* De 15px 20px a rem */
+  padding: 0.9375rem 1.25rem; 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* Alinea el contenido a la parte inferior del overlay */
   align-items: center;
-  /* Alinea el contenido a la izquierda */
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Fondo negro semi-transparente */
+  background-color: rgba(0, 0, 0, 0.232);
   color: white;
-  /* Color del texto blanco */
-  /*   box-sizing: border-box; */
-  /* Incluye el padding en el ancho/alto del overlay */
-  opacity: 0;
-  /* Invisible por defecto */
-  transition: opacity var(--transition-speed);
-  /* Transición suave al aparecer */
+
 }
 
 .producto:hover .info-producto {
-  opacity: 1;
-  /* Se vuelve visible al pasar el mouse por encima del producto */
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #selectProductos {
   font-family: var(--fuente-dos);
-  font-size: 0.55em;
-  padding: 0.6em;
+  /* De 0.55em a rem */
+  font-size: 0.55rem; 
+  /* De 0.6em a rem */
+  padding: 0.6rem; 
   border: 1px solid grey;
-  border-radius: 4px;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  margin-left: 32px;
+  /* De 4px a rem */
+  border-radius: 0.25rem; 
+  /* De 32px a rem */
+  margin-top: 2rem; 
+  margin-bottom: 2rem;
+  margin-left: 2rem;
 }
 
 #selectProductos:focus {
   outline: none;
-  /* Quita el contorno azul/naranja por defecto al enfocar */
   border-color: none;
-  /* Borde de color azul al enfocar (puedes usar tu color de acento) */
-  box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-  /* Sombra sutil al enfocar */
-}
+  box-shadow: 0 0 0 0.0625rem rgba(0, 123, 255, 0.25);
+} 
 
 /* ESTILOS DEL BOTÓN DENTRO DEL OVERLAY */
 .producto .info-producto .boton {
   border-color: white;
-  /* Borde del botón blanco */
   color: white;
-  /* Texto del botón blanco */
   background-color: transparent;
-  /* Fondo transparente para el botón */
 }
 
 .producto .info-producto .boton:hover {
   background-color: white;
-  /* Fondo blanco al hacer hover en el botón */
   color: black;
-  /* Texto oscuro al hacer hover en el botón */
 }
 
 /* ESTILOS DE TÍTULOS Y PÁRRAFOS DENTRO DEL OVERLAY */
+
+
 .producto h3 {
   font-family: var(--secondary-font);
-  font-size: 1.4em;
-  /* Aumentado para que sea más legible */
-  margin-bottom: 8px;
+  /* De 1.4em a rem */
+
+  /* De 8px a rem */
+  margin-bottom: 0.5rem; 
   margin-top: 0;
   color: inherit;
-  /* Hereda el color blanco del .info-producto */
 }
 
+
+
 .producto p {
-  /* Este párrafo no está en tu HTML actual de info-producto */
-  font-size: 1.1em;
+  /* De 1.1em a rem */
+  font-size: 1rem; 
   color: inherit;
-  /* Hereda el color blanco del .info-producto */
-  margin-bottom: 15px;
+  /* De 15px a rem */
+  margin-bottom: 0.9375rem; 
   font-weight: 600;
 }
 
@@ -1029,36 +1071,47 @@ img {
 .footer {
   background-color: #1a1a1a;
   color: #f8f8f8;
-  padding: 60px 50px 30px;
-  font-size: 0.7em;
-  margin-top: 92px;
+  /* De 60px 50px 30px a rem */
+  padding: 3.75rem 3.125rem 1.875rem; 
+  /* De 0.7em a rem */
+  font-size: 0.7rem; 
+  /* De 92px a rem */
+  margin-top: 5.75rem; 
 }
 
 .footer-columnas {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto 50px;
+  /* De 40px a rem */
+  gap: 2.5rem; 
+  /* De 1200px a rem */
+  max-width: 75rem; 
+  /* De 50px a rem */
+  margin: 0 auto 3.125rem; 
 }
 
 .footer-col {
   flex: 1;
-  min-width: 200px;
+  /* De 200px a rem */
+  min-width: 12.5rem; 
 }
 
 .footer-col h3 {
   font-family: var(--fuente-dos);
-  font-size: 0.8em;
-  margin-bottom: 20px;
+  /* De 0.8em a rem */
+  font-size: 0.8rem; 
+  /* De 20px a rem */
+  margin-bottom: 1.25rem; 
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 10px;
+  /* De 10px a rem */
+  padding-bottom: 0.625rem; 
 }
 
 .footer-col ul li {
-  margin-bottom: 10px;
+  /* De 10px a rem */
+  margin-bottom: 0.625rem; 
 }
 
 .footer-col ul li a {
@@ -1074,15 +1127,18 @@ img {
 .newsletter {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  /* De 10px a rem */
+  gap: 0.625rem; 
 }
 
 .newsletter input[type="email"] {
-  padding: 12px;
+  /* De 12px a rem */
+  padding: 0.75rem; 
   border: 1px solid #333;
   background-color: #1a1a1a;
   color: #fff;
-  font-size: 0.8em;
+  /* De 0.8em a rem */
+  font-size: 0.8rem; 
   width: 100%;
 }
 
@@ -1094,9 +1150,11 @@ img {
   background-color: #1a1a1a;
   color: #fff;
   border: 1px solid #333;
-  padding: 12px 20px;
+  /* De 12px 20px a rem */
+  padding: 0.75rem 1.25rem; 
   cursor: pointer;
-  font-size: 0.8em;
+  /* De 0.8em a rem */
+  font-size: 0.8rem; 
   font-weight: 200;
   transition: 0.2s;
 }
@@ -1107,20 +1165,25 @@ img {
 }
 
 .creditos {
-  font-size: 0.6em;
+  /* De 0.6em a rem */
+  font-size: 0.6rem; 
 }
 
 #numeroCarrito {
   display: none;
   font-family: var(--fuente-dos);
-  font-size: 6px;
-  width: 10px;
-  height: 10px;
+  /* De 6px a rem */
+  font-size: 0.375rem; 
+  /* De 10px a rem */
+  width: 0.625rem; 
+  height: 0.625rem;
   background-color: red;
   border-radius: 50%;
   text-align: center;
   color: #fff;
   position: fixed;
-  top: 28px;
-  right: 104px;
+  /* De 28px a rem */
+  top: 1.75rem; 
+  /* De 104px a rem */
+  right: 6.5rem; 
 }
