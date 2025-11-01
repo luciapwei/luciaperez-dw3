@@ -7,7 +7,6 @@
   --fuente: 'Manrope', sans-serif;
   --fuente-dos: "Noto Serif SC", serif;
   --transicion: 0.3s ease;
-  /* Definimos un tamaño base para usar rem */
   font-size: 16px; 
 }
 
@@ -17,13 +16,6 @@
   box-sizing: border-box;
 }
 
-html, body {
-  /* ¡Aplica el control de desbordamiento tanto al HTML como al Body! */
-  overflow-x: hidden; 
-  /* Si el contenido aún parece forzar el ancho, añade esto al body */
-  width: 100%;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -31,9 +23,11 @@ body {
   line-height: 1.6;
   color: var(--color-texto);
   background-color: var(--fondo);
-  /* Usamos vw para asegurar que no haya scroll horizontal no deseado */
   overflow-x: hidden; 
 }
+
+
+
 
 a {
   text-decoration: none;
@@ -63,15 +57,28 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* De 0px 50px a rem */
   padding: 0rem 3.125rem; 
   background-color: transparent;
   border-bottom: none;
   z-index: 10;
 }
 
+.pagina-blanca .header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 3.125rem; 
+  background-color: rgba(255, 255, 255, 0.438);
+  border-bottom: none;
+  z-index: 10;
+}
+
+
 .logo img {
-  /* De max-height: 80px a rem */
   max-height: 5rem; 
   width: auto;
   display: block;
@@ -79,30 +86,54 @@ img {
 
 /* Estilos para los SVGs dentro de los botones/enlaces */
 .icono {
-  /* De 24px a rem */
   width: 1.5rem;
   height: 1.5rem;
   display: block;
   position: relative;
 }
 
-/* El contenedor principal de los iconos (tu nav) */
+/* --- Ajuste de espaciado para dispositivos Móviles (hasta 768px) --- */
+@media (max-width: 768px) {
+
+    /* Seleccionamos el contenedor de los iconos (Lupa, Usuario, Carrito, Menú) */
+    .iconos {
+        /* Aplica un margen izquierdo para empujar el bloque de iconos lejos del logo. */
+        /* Ajusta este valor (ej. 3rem) según el espacio que necesites. */
+        margin-left: 2rem; 
+    }
+    
+    /* Nota: Si el header ya usa 'justify-content: space-between', el margen puede no ser necesario, */
+    /* pero si buscas un control de espacio específico, este margen funciona. */
+}
+
+/* --- MEDIA QUERY para Mobile S (320px) --- */
+@media (max-width: 375px) { 
+    
+    /* Aumentar el tamaño del logo */
+    .header .logo img{ 
+      display: none;
+    
+    }
+
+    .iconos{
+      margin-top: 1rem;
+    }
+    
+}
+
 .iconos {
   display: flex;
   align-items: center;
-  /* De 20px a rem */
   gap: 1.25rem; 
   position: relative;
   overflow: visible;
   z-index: 50;
 }
 
-/* NUEVA CLASE: Estilos para cada elemento de icono (button o a) */
 .nav-icon-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* De 20px a rem */
   width: 1.25rem; 
   height: 1.25rem;
   background: none;
@@ -110,9 +141,80 @@ img {
   cursor: pointer;
   padding: 0;
   color: white;
-  /* De 0.9em a rem (relativo a su padre) */
   font-size: 0.9rem; 
 }
+#contenedorSugerencias {
+ position: relative;
+ display: flex;
+  align-items: center; /* Asegura la alineación vertical */
+}
+
+/* Ajustes para el botón de la lupa */
+#botonLupa {
+    /* Elimina cualquier margen residual que pueda levantarlo */
+    margin: 0; 
+    /* Asegura que el contenido (el SVG) esté centrado dentro del botón */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    /* Evita que el line-height lo empuje */
+    line-height: 0;
+}
+
+/* Ajustes para el input que se expande */
+#inputBuscador {
+    /* El input necesita una altura definida si la lupa la tiene */
+    /* Ya tienes: padding: 0; */
+    /* Opcional: añade vertical-align: middle; si flex falla */
+    vertical-align: middle;
+}
+.pagina-blanca #inputBuscador {
+    /* 1. Cambia el color del texto a negro */
+    color: var(--color-texto); 
+    /* 2. Cambia el borde de fondo transparente a un color de texto */
+    border-bottom-color: var(--color-texto) !important; 
+}
+
+.pagina-blanca #inputBuscador::placeholder {
+    /* 3. Cambia el color del placeholder a un gris más oscuro (acento) */
+    color: var(--acento); 
+}
+
+.pagina-blanca #inputBuscador:focus {
+    /* 4. Cambia el borde al hacer focus */
+    border-bottom-color: var(--acento) !important;
+}
+
+/* Opcional, si usas la lista de sugerencias */
+.pagina-blanca #sugerencias {
+    color: var(--color-texto);
+    background-color: white; /* Para que la caja de sugerencias se vea bien */
+    border: 1px solid var(--acento);
+}
+
+.pagina-blanca #sugerencias {
+    /* Fondo: de transparente/oscuro a blanco */
+    background-color: var(--fondo); 
+    /* Texto: de blanco a negro */
+    color: var(--color-texto);
+    /* Borde: de blanco semi-transparente a gris/negro */
+    border: 1px solid var(--acento); 
+    /* Si el scrollbar aún se ve oscuro: */
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1); /* Sombra más clara */
+}
+
+/* Aplicamos el color negro a los elementos internos (los botones de búsqueda) */
+.pagina-blanca #sugerencias button.guardar {
+    color: var(--color-texto); /* Texto del botón a negro */
+}
+
+/* Aplicamos el hover para que no sea blanco sobre blanco */
+.pagina-blanca #sugerencias div:hover {
+    /* Hover más sutil para fondo blanco */
+    background-color: rgba(0, 0, 0, 0.05); 
+}
+
+
 
 
 #inputBuscador {
@@ -120,8 +222,7 @@ img {
   display: none;
   font-family: var(--fuente);
   background-color: transparent;
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
+  font-size: 0.9rem; 
   border: none;
   width: 0;
   opacity: 0;
@@ -130,70 +231,48 @@ img {
   transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 }
 
-#contenedorSugerencias {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
 #sugerencias button.guardar {
   width: 100%;
   text-align: left;
   background-color: transparent;
-  border: none;
-  /* De 10px 12px a rem */
   padding: 0.625rem 0.75rem; 
-  /* De 0.9em a rem */
   font-size: 0.9rem; 
   color: white;
   font-family: var(--fuente);
+  border: none;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
-
-
 
 #sugerencias {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  /* De 240px a rem */
   width: 15rem; 
   z-index: 9999;
-  background-color: rgb(147, 146, 142);
+  background-color: transparent;
   color: white;
   font-family: var(--fuente);
-  /* De 0.8em a rem */
   font-size: 0.8rem; 
   font-weight: 300;
-
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-top: none;
-  border-radius: 0 0 0.375rem 0.375rem; /* De 6px a rem */
-
-  /* De 8px 12px a rem */
+  border-radius: 0 0 0.375rem 0.375rem; 
   padding: 0.5rem 0.75rem; 
-  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3); /* De 8px 20px a rem */
-
-  /* De 280px a rem */
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
   max-height: 17.5rem; 
   overflow-y: auto;
-
-
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
 
-/* cuando esté activo (desde JS), que se muestre */
 #sugerencias.visible {
   display: block;
   opacity: 1;
 }
 
-/* estilo interno de cada sugerencia (opcional si usás <p>, <div> o <li>) */
 #sugerencias div {
-  /* De 6px 8px a rem */
   padding: 0.375rem 0.5rem; 
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
@@ -217,26 +296,19 @@ img {
   display: none;
   font-family: var(--fuente-dos);
   background-color: rgba(255, 255, 255, 0.118);
-  /* De 50px a rem */
   padding: 3.125rem; 
   color: rgb(147, 146, 142);
-  /* De 0.9em a rem */
   font-size: 0.9rem; 
   position: fixed;
   top: 0;
-  /* De -250px a rem */
   right: -15.625rem; 
-
-  /* De 250px a rem */
   width: 15.625rem; 
-  /* De 100% a vh */
   height: 100vh; 
   background-color: rgba(255, 255, 255, 0.8);
   transition: left 0.3s ease;
   z-index: 999;
   opacity: 0;
   transition: right 0.3s ease, opacity 0.3s ease;
-
 }
 
 .listaNav {
@@ -246,7 +318,6 @@ img {
 .listaNav button {
   border: none;
   background-color: transparent;
-  /* De 0.8em a rem */
   font-size: 0.8rem; 
   transition: 0.2s;
 }
@@ -260,7 +331,6 @@ img {
 #navLateral a {
   color: rgb(140, 135, 110);
   text-decoration: none;
-  /* De 0.9em a rem */
   font-size: 0.9rem; 
   transition: 0.3s;
 }
@@ -268,9 +338,7 @@ img {
 #navLateral a:hover {
   color: rgb(87, 83, 63);
   text-decoration: none;
-  /* De 0.95em a rem */
   font-size: 0.95rem; 
-
 }
 
 #navLateral ul {
@@ -280,7 +348,6 @@ img {
 }
 
 #navLateral li {
-  /* De 20px a rem */
   margin-bottom: 1.25rem; 
 }
 
@@ -294,9 +361,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  /* De 100vw a 100% */
   width: 100%; 
-  /* De 100vh a 100% */
   height: 100%; 
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
@@ -307,9 +372,7 @@ img {
   position: fixed;
   top: 30;
   left: 50%;
-  /* Mantenemos % para anchos de contenedores grandes */
   width: 40%; 
-  /* Mantenemos % para alturas de contenedores grandes */
   height: 80%; 
   justify-content: center;
   align-items: center;
@@ -319,31 +382,23 @@ img {
 .modal-contenido {
   background-color: white;
   font-family: var(--fuente-dos);
-  /* De 30px a rem */
   padding: 1.875rem; 
-  /* De 12px a rem */
   border-radius: 0.75rem; 
-  /* De 400px a rem */
   max-width: 25rem; 
-  /* Mantenemos % */
   width: 90%; 
   box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.3); /* De 15px a rem */
 }
 
 .modal-contenido h2 {
-  /* De 0.8em a rem */
   font-size: 0.8rem; 
   margin-bottom: 0;
 }
 
 .inputVentanaModal {
-  /* De 4px 12px a rem */
   padding: 0.25rem 0.75rem; 
   box-sizing: border-box;
-  /* De 0.6em a rem */
   font-size: 0.6rem; 
   width: 100%;
-  /* De 8px a rem */
   margin-bottom: 0.5rem; 
 }
 
@@ -354,19 +409,15 @@ img {
 .inputGrupo {
   display: flex;
   align-items: center;
-  /* De 10px a rem */
   gap: 0.625rem; 
-  /* De 5px a rem */
   margin-bottom: 0.3125rem; 
 }
 
 .inputGrupo p {
-  /* De 0.5em a rem */
   font-size: 0.5rem; 
   font-weight: 600;
   color: rgb(214, 37, 37);
   border-radius: 20%;
-  /* De 4px a rem */
   padding: 0.25rem; 
 }
 
@@ -376,17 +427,14 @@ img {
   font-family: var(--fuente);
   background-color: #4a4a4a;
   display: inline-block;
-  /* De 4px 12px a rem */
   padding: 0.25rem 0.75rem; 
   border: 1px solid #fff;
   color: #fff;
   font-weight: 400;
-  /* De 0.6em a rem */
   font-size: 0.6rem; 
   letter-spacing: 1px;
   transition: all var(--transicion);
   align-items: center;
-  /* De 12px a rem */
   margin-top: 0.75rem; 
 }
 
@@ -407,17 +455,14 @@ img {
 .botonCrear {
   font-family: var(--fuente);
   display: inline-block;
-  /* De 4px 12px a rem */
   padding: 0.25rem 0.75rem; 
   border: 1px solid #fff;
   color: #4a4a4a;
   font-weight: 400;
-  /* De 0.6em a rem */
   font-size: 0.6rem; 
   letter-spacing: 1px;
   transition: all var(--transicion);
   align-items: center;
-  /* De 8px a rem */
   margin-top: 0.5rem; 
 }
 
@@ -438,14 +483,11 @@ img {
 }
 
 #botonCruz {
-
   background-color: transparent;
-  /* De 16px a rem */
   width: 1rem; 
   height: 1rem;
   display: flex;
   justify-content: center;
-
   border: none;
   padding: 0;
   display: inline;
@@ -453,46 +495,32 @@ img {
   transition: background-color 0.3s ease;
 }
 
-
-
-/* ----- ESTILO PARA ACHICAR LA CRUZ SVG ----- */
 #botonCruz svg {
-  /* De 12px a rem */
   width: 0.75rem; 
   height: 0.75rem;
   stroke: #333;
-  /* De 5px a rem */
   margin-right: 0.3125rem; 
 }
 
-
-/* Esto es lo que organiza el formulario en columnas */
 .modal-contenido form {
   display: flex;
-  /* De 12px a rem */
   margin-top: 0.75rem; 
   flex-direction: column;
-  /* De 4px a rem */
   gap: 0.25rem; 
 }
-
 
 .modal-contenido button,
 .modal-contenido label {
   width: auto;
   box-sizing: border-box;
-  /* De 0.6em a rem */
   font-size: 0.6rem; 
 }
 
 .modal-contenido label {
   margin-right: 0;
-  /* De 5px a rem */
   padding-right: 0.3125rem; 
   margin-right: 0;
 }
-
-
 
 #registrarse {
   margin-top: 0;
@@ -500,10 +528,11 @@ img {
   display: none;
 }
 
+/* banner */
+
 .banner {
   position: relative;
   width: 100%;
-  /* De 100vh a vh (correcto) */
   height: 100vh; 
   overflow: hidden;
   background-color: #000;
@@ -514,27 +543,18 @@ img {
   z-index: 100;
   top: 0;
   width: 100%;
-  /* De 16vh a vh (correcto) */
   height: 16vh; 
-  background-color: rgb(176, 176, 176);
+  background-color: transparent;
 }
 
 #slider {
   display: flex;
-  /* Usamos vw (viewport width) para garantizar el 100% de la ventana, ignorando padding/margins del body */
-  width: 100vw; 
-  /* Usamos vh (viewport height) para definir una altura atractiva y responsiva */
-  height: 100vh; /* O el valor que desees, por ejemplo, 75vh o 100vh */
-  
-  /* Asegura que el slider empiece desde el borde izquierdo */
+  width: 100%; 
+  height: 100vh; 
   margin-left: calc(50% - 50vw); 
-  
-  /* Puedes mantener tus estilos de centrado si los necesitas */
   justify-content: center;
   align-items: center;
   background-color: #000;
-  
-  /* Si tu JS usa el ID, el selector sería #slider, no .slider */
 }
 
 
@@ -549,7 +569,7 @@ img {
 
 .textoBanner {
   /* De 0.7em a rem */
-  font-size: 0.7rem; 
+  font-size: 1rem; 
   font-family: var(--fuente-dos);
   position: absolute;
   top: 0;
@@ -638,16 +658,13 @@ img {
 .articulo {
   flex: 0 0 auto;
   font-family: var(--fuente-dos);
-  /* De 0.6em a rem */
-  font-size: 0.6rem; 
-  /* De 200px a rem */
   width: 12.5rem; 
-  /* De 0 10px a rem */
   margin: 0 0.625rem; 
   background-color: transparent;
-  /* De 12px a rem */
+    font-weight: 400;
+  margin-bottom: 0.3125rem; 
   border-radius: 0.75rem; 
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* De 4px 8px a rem */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
   transition: transform 0.3s;
 }
 
@@ -657,32 +674,32 @@ img {
 
 .articulo img {
   width: 100%;
-  /* De 248px a rem */
   height: 15.5rem; 
   object-fit: cover;
-  /* De 12px a rem */
   border-top-left-radius: 0.75rem; 
   border-top-right-radius: 0.75rem;
 
 }
 
 .articulo .info {
-  /* De 10px a rem */
   padding: 0.625rem; 
 }
 
-.articulo {
-  font-weight: 400;
-  /* De 5px a rem */
-  margin-bottom: 0.3125rem; 
+.articulo h5 {
+  font-size: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .articulo .titulo {
-  /* De 1em a rem */
-  font-size: 1rem; 
+  font-size: 0.9rem; 
   font-weight: bold;
-  /* De 5px a rem */
   margin-bottom: 0.3125rem; 
+  /* 1. Evita que el texto salte a una nueva línea */
+    white-space: nowrap; 
+
+    /* 2. Oculta cualquier contenido que desborde el contenedor */
+    overflow: hidden; 
+
 }
 
 .articulo .boton {
@@ -691,6 +708,7 @@ img {
 
 .articulo .precio {
   font-weight: 600;
+  font-size: 0.7rem;
 }
 
 @keyframes deslizar {
@@ -703,10 +721,7 @@ img {
   }
 }
 
-/* termina */
-
 .destacados {
-  /* De 80px 80px a rem */
   padding: 5rem 5rem; 
   text-align: left;
   background-color: #fff;
@@ -714,24 +729,16 @@ img {
   box-sizing: border-box;
 }
 
-/* Estilo general del área de ampliación */
 #ampliacion {
   display: flex;
-  /* De 300px a rem */
   margin-top: 18.75rem; 
-  /* De 10px a rem */
   gap: 0.625rem; 
   width: 100%;
-  /* De 1200px a rem */
   max-width: 75rem; 
-  /* De 50px a rem */
   margin: 3.125rem auto; 
-  /* De 0 20px a rem */
   padding: 0 1.25rem; 
   justify-content: center;
   box-sizing: border-box;
-
-  /* De 40px 20px a rem */
   padding: 2.5rem 1.25rem; 
   background-color: var(--fondo);
 }
@@ -864,6 +871,58 @@ img {
   cursor: pointer;
   transition: transform 0.2s;
 }
+
+
+/* --- MEDIA QUERY PARA DISPOSITIVOS MÓVILES Y TABLETS PEQUEÑAS --- */
+@media (max-width: 425px) { /* Ajusta el max-width según tu definición de "Mobile M" si es diferente */
+    
+    /* 1. Columna de Imagen (imagen grande + miniaturas) */
+    #productoAmpliado .columna-imagen {
+        flex-direction: column; /* Apila los elementos: imagen grande arriba, miniaturas abajo */
+        min-width: 100%; /* Ocupa todo el ancho disponible */
+        gap: 0.75rem; 
+        align-items: center; /* Centra la imagen grande y las miniaturas */
+    }
+
+    /* 2. Contenedor de las Miniaturas */
+    .galeria-miniaturas {
+        display: flex; /* Asegura que sea flex */
+        flex-direction: row; /* Las miniaturas van en fila */
+        justify-content: center; /* Centra las miniaturas horizontalmente */
+        width: 100%; /* El contenedor de miniaturas ocupa todo el ancho */
+        order: 2; /* OPCIONAL: Coloca las miniaturas debajo de la imagen grande */
+        padding: 0.5rem 0; /* Un poco de padding arriba/abajo */
+    }
+
+    /* 3. La Imagen Grande */
+    .imagen-grande {
+        order: 1; /* OPCIONAL: Coloca la imagen grande arriba */
+        width: 100%; /* La imagen grande ocupa todo el ancho */
+        max-height: 50vh; /* Limita la altura de la imagen grande para que no ocupe toda la pantalla */
+        object-fit: contain; /* Para que la imagen grande se vea completa sin recortar */
+        background-color: transparent; /* Fondo si la imagen no llena todo el espacio */
+    }
+
+    /* 4. CLAVE: Cada Miniatura (el 'img' en sí) */
+    .galeria-miniaturas img {
+        width: 4.5rem; /* Un tamaño ligeramente mayor para Mobile M */
+        height: 4.5rem; /* Forzamos una altura igual para que sea un cuadrado */
+        
+        /* MUY IMPORTANTE: Usamos 'cover' para que la imagen LLENE el cuadrado. */
+        /* Esto significa que los bordes largos (arriba/abajo) se recortarán, */
+        /* pero la imagen no se deformará y se verá a un tamaño decente. */
+        object-fit: cover; 
+        
+        display: block; /* Asegura que se comporte como un bloque */
+        padding: 0; /* Elimina cualquier padding interno */
+        margin: 0 0.25rem; /* Espacio horizontal entre miniaturas */
+        
+        border: 1px solid var(--acento); /* Un borde para definir visualmente cada miniatura */
+        background-color: var(--fondo); /* Un fondo si la imagen no llena exactamente */
+        border-radius: 0.375rem;
+    }
+}
+
 
 .galeria-miniaturas img:hover {
 
@@ -1122,7 +1181,6 @@ img {
 .footer-col ul li a:hover {
   color: #fff;
 }
-
 
 .newsletter {
   display: flex;

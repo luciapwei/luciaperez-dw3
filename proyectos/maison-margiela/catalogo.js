@@ -6,7 +6,7 @@ let catalogoAmpliar = productos.filter((elemento) => elemento.categoria == idEnv
 
 //funcion para mostrar productos
 const mostrarArray = (array, colocar) => {
-    productosMostrar = "";
+    let productosMostrar = "";
     array.forEach(element => {
         productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
         <div class="producto">
