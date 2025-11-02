@@ -12,6 +12,15 @@ body {
     min-height: 100vh; 
     display: flex; 
     align-items: center; 
+    /* 3. ¡La clave! Lo hacemos columna para poder mover los elementos */
+    flex-direction: column; 
+    
+    /* 4. Distribuye el espacio entre los hijos, asegurando que no queden pegados arriba */
+    /* Esto es mejor que 'center' para evitar que se corte por las barras de iOS */
+    justify-content: space-around; 
+    
+    /* 5. Aseguramos que el contenido principal del container-fluid ocupe todo el ancho disponible */
+    width: 100%;
 }
 
 
@@ -143,5 +152,18 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+    .text-montevideo {
+        font-size: 4rem; /* Reducir de 6rem a 4rem */
+    }
 
+    .text-designers {
+        font-size: 3rem; /* Reducir de 4rem a 3rem */
+    }
+    
+    .star-large {
+        width: 10rem; /* Reducir el tamaño de la estrella */
+        height: 10rem;
+    }
+}
 
