@@ -79,6 +79,31 @@ color: var(--color-oscuro);
     color: var(--color-oscuro) !important; 
 }
 
+/* estilos para el botón de "volver al inicio" */
+
+#backToTop {
+position: fixed; 
+bottom: 20px; 
+right: 20px; 
+z-index: 1000; 
+width: 45px;
+height: 45px;
+padding: 0;
+line-height: 45px;
+text-align: center;
+font-size: 1.2rem;
+color: var(--color-claro);
+background-color: var(--color-acento);
+border: none;
+transition: opacity 0.3s, transform 0.3s;
+}
+
+#backToTop:hover {
+background-color: var(--color-claro);
+transform: scale(1.1);
+color: var(--color-oscuro);
+}
+
 /* footer */
 
 .footer-icon{

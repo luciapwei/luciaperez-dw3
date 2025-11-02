@@ -1,0 +1,147 @@
+
+body {
+    background-color: #003ABC; 
+    color: white; 
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+.hero-section {
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+}
+
+
+.social-icon {
+    color: white; 
+    margin: 0 1rem; 
+    background-color: transparent; 
+    font-size: 1.5rem; 
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #cccccc; 
+    text-decoration: none; 
+}
+
+.iconos-sociales {
+    align-items: center;
+}
+
+.text-montevideo {
+    font-family: "deseo-medium", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 6rem;
+    line-height: 1;
+}
+
+.text-designers {
+    font-family: "termina", sans-serif;
+    font-size: 4rem; 
+    font-weight: 800; 
+    line-height: 1;
+}
+
+
+.primer-encuentro {
+    margin-top: 2rem;
+    font-family: "termina", sans-serif;
+    font-size: 2rem; 
+    font-weight: 500; 
+}
+
+.star-small {
+    width: 8rem;    
+    height: 8rem;
+    display: inline-block;
+    margin-right: 4rem;
+    margin-left: 2rem;
+}
+
+.star-large {
+    width: 16rem; 
+    height: 16rem;
+    margin-right: 2rem; 
+    margin-bottom: 2rem;
+    animation: spin 20s linear infinite;
+}
+
+.star-png img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.btn{
+    background-color: #ffffff;
+    color: #003ABC;
+    font-family: "termina", sans-serif;
+    font-weight: 600;
+}
+
+.btn:hover{
+    background-color: #ffffff;
+    color: #003ABC;
+    font-family: "termina", sans-serif;
+    font-weight: 600;
+}
+
+.animate-pulse {
+    animation: cta-pulse 1.5s infinite; 
+    position: relative; 
+    z-index: 10;
+}
+
+#informacion{
+    display: none;
+    font-family: "termina", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 1.5;
+    color: #FFFFFF;
+
+}
+
+/* Clase para mostrarlo (con JS) */
+.mostrar {
+    display: block !important;
+}
+
+/* --- 1. DEFINICIÓN DE KEYFRAMES --- */
+@keyframes spin {
+    from {
+        /* Estado inicial: 0 grados */
+        transform: rotate(0deg);
+    }
+    to {
+        /* Estado final: 360 grados (una vuelta completa) */
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes cta-pulse {
+  0% {
+    transform: scale(1); /* Tamaño normal al inicio */
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); /* Sombra transparente */
+  }
+  70% {
+    transform: scale(1.05); /* Ligeramente más grande */
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); /* Sombra que se expande y se desvanece */
+  }
+  100% {
+    transform: scale(1); /* Vuelve al tamaño normal */
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+
+
