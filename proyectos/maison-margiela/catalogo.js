@@ -10,15 +10,14 @@ const mostrarArray = (array, colocar) => {
     array.forEach(element => {
         productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
         <div class="producto">
-             <img src="${element.img[0]}" alt="foto producto">
-             <div class="info-producto">
-              <h4>Destacados del mes</h4>
-             <h3>${element.nombre}</h3>
-              <p>$${element.precio}</p>
-             <button class="boton" id="${element.id}">Ver más</button>
-             </div>
-             </div> 
-             </div>`;
+        <img src="${element.img[0]}" alt="foto producto">
+        <div class="info-producto">
+        <h3>${element.nombre}</h3>
+        <p>$${element.precio}</p>
+        <button class="boton" id="${element.id}">Ver más</button>
+        </div>
+        </div> 
+        </div>`;
 
 
         colocar.innerHTML = productosMostrar
@@ -60,14 +59,16 @@ const filtroSelect = () => {
             let nroRandom = Math.floor(Math.random() * copiaDestacados.length);
             let productoSacado = copiaDestacados.splice(nroRandom, 1)[0];
 
-            productosMostrar += `<div class="producto">
-             <img src="${productoSacado.img[0]}" alt="foto producto">
-             <div class="info-producto">
-             <h3>${productoSacado.nombre}</h3>
-              <p>$${productoSacado.precio}</p>
-             <button class="boton"id="${productoSacado.id}">Ver más</button>
-             </div>
-             </div>`;
+            productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="producto">
+            <img src="${productoSacado.img[0]}" alt="foto producto">
+            <div class="info-producto">
+            <h3>${productoSacado.nombre}</h3>
+            <p>$${productoSacado.precio}</p>
+            <button class="boton"id="${productoSacado.id}">Ver más</button>
+            </div>
+            </div>
+            </div>`;
 
             contador++;
         }
@@ -84,14 +85,16 @@ const filtroSelect = () => {
             contador++;
         }
         productosAleatorios.forEach((e) => {
-            productosMostrar += `<div class="producto">
-             <img src="${productoSacado.img[0]}" alt="foto producto">
-             <div class="info-producto">
-             <h3>${productoSacado.nombre}</h3>
-              <p>$${productoSacado.precio}</p>
-             <button class="boton"id="${productoSacado.id}">Ver más</button>
-             </div>
-             </div>`
+            productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="producto">
+            <img src="${productoSacado.img[0]}" alt="foto producto">
+            <div class="info-producto">
+            <h3>${productoSacado.nombre}</h3>
+            <p>$${productoSacado.precio}</p>
+            <button class="boton"id="${productoSacado.id}">Ver más</button>
+            </div>
+            </div>
+            </div>`
         });
     }
 
@@ -114,12 +117,14 @@ const filtroSelect = () => {
         }
         for (let i = 0; i < 9 && i < productosOrdenadosPrecio.length; i++) {
             let e = productosOrdenadosPrecio[i];
-            productosMostrar += `<div class="producto">
+            productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="producto">
             <img src="${e.img[0]}" alt="foto producto">
             <div class="info-producto">
             <h3>${e.nombre}</h3>
             <p>$${e.precio}</p>
             <button class="boton" id="${e.id}">Ver más</button>
+            </div>
             </div>
             </div>`;
         }
@@ -145,12 +150,14 @@ const filtroSelect = () => {
         }
         for (let i = 0; i < 9 && i < productosOrdenadosPrecioMayor.length; i++) {
             let e = productosOrdenadosPrecioMayor[i];
-            productosMostrar += `<div class="producto">
+            productosMostrar += `<div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="producto">
             <img src="${e.img[0]}" alt="foto producto">
             <div class="info-producto">
             <h3>${e.nombre}</h3>
             <p>$${e.precio}</p>
             <button class="boton" id="${e.id}">Ver más</button>
+            </div>
             </div>
             </div>`;
         }

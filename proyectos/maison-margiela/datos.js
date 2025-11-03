@@ -333,10 +333,9 @@ let productos = [
         descripcion: "En una edición limitada, este polo descolorido por el sol recuerda las prendas desgastadas naturalmente por el paso del tiempo. Inspirado en prendas de trabajo reales, presenta un acabado vintage que imita la pátina de la exposición al sol, lo que aporta textura a su confección ultraligera."
     },
     {
-        id: 21,
+        id: 22,
         tipo: "Bolsos",
         categoria: "Bolsos",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/bolsos/5ACClassiqueMini1.jpg", "img/inventario/bolsos/5ACClassiqueMini2.jpg", "img/inventario/bolsos/5ACClassiqueMini3.jpg"],
@@ -348,10 +347,9 @@ let productos = [
         descripcion: "El 5AC classique mini, confeccionado en piel en flor, presenta asas superiores y correa de tono. Está adornado con la etiqueta del logotipo en la parte delantera. La emblemática línea 5AC toma su nombre de la palabra francesa «sac» (bolso). Interpreta el concepto de Anonymity of the lining de la Maison. Los remaches metálicos del bolso están cubiertos por piel a mano, y el metal solo está visible cuando es necesario para lograr un aspecto impecable. "
     },
     {
-        id: 22,
+        id: 23,
         tipo: "Bolsos",
         categoria: "Bolsos",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/bolsos/BolsodemanopequeñoSnatched1.jpg", "img/inventario/bolsos/BolsodemanopequeñoSnatched2.jpg", "img/inventario/bolsos/BolsodemanopequeñoSnatched3.jpg"],
@@ -363,10 +361,9 @@ let productos = [
         descripcion: "El bolso de mano Snatched pequeño está diseñado con un acabado texturizado, acabado metalizado y de charol para enfatizar sus arrugas. El bolso Snatched se presentó por primera vez en la colección Artisanal AW19. Su nombre procede de un término coloquial para indicar que algo «luce bien», pero también hace referencia a la forma en que se puede llevar este diseño. Este bolso unisex presenta una forma asimétrica que se inspira en el origami."
     },
     {
-        id: 23,
+        id: 24,
         tipo: "Bolsos",
         categoria: "Bolsos",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/bolsos/DressageHobo1.jpg", "img/inventario/bolsos/DressageHobo2.jpg", "img/inventario/bolsos/DressageHobo3.jpg"],
@@ -378,10 +375,9 @@ let productos = [
         descripcion: "La Maison lanza el bolso hobo Dress-age para SS25, diseñado en suave piel de becerro. Con un toque ecuestre, este bolso pequeño presenta un trabajo de cuero clásico y líneas refinadas, combinando un glamour inconsciente con un diseño gestual. Tiene forma trapezoidal con detalle de correa de doble uso en contraste. La base tachonada permite que el bolso se mantenga de pie, y el interior está adornado con el logotipo."
     },
     {
-        id: 24,
+        id: 25,
         tipo: "Bolsos",
         categoria: "Bolsos",
-        talle: [],
         color: ["Azul"],
         stock: true,
         img: ["img/inventario/bolsos/GlamSlamhobopequeño1.jpg", "img/inventario/bolsos/GlamSlamhobopequeño2.jpg", "img/inventario/bolsos/GlamSlamhobopequeño3.jpg"],
@@ -393,10 +389,9 @@ let productos = [
         descripcion: "El bolso hobo Glam Slam pequeño está confeccionado en terciopelo acolchado. El Glam Slam debutó en el desfile SS18 y tiene un diseño acolchado que imita el matelassé, el estilo de los edredones cosidos a mano creado en Marsella, Francia. El concepto refleja la noción de unconscious glamour de la Maison y evoca su asociación con el confort, siguiendo el estudio de los rituales del vestir y viajar por todo el mundo."
     },
     {
-        id: 25,
+        id: 26,
         tipo: "Bolsos",
         categoria: "Bolsos",
-        talle: [],
         color: ["Azul"],
         stock: true,
         img: ["img/inventario/bolsos/MochilamediumHightech1.jpg", "img/inventario/bolsos/MochilamediumHightech2.jpg", "img/inventario/bolsos/MochilamediumHightech3.jpg", "img/inventario/bolsos/MochilamediumHightech4.jpg"],
@@ -408,10 +403,9 @@ let productos = [
         descripcion: "Esta mochila técnica está confeccionada en un tejido estructurado con paneles de malla, herrajes plateados y correas ajustables. La solapa superior oculta un cierre con cordón, mientras que la parte trasera acolchada garantiza la comodidad durante el transporte. El diseño está acentuado con una placa con el logotipo tonal y las Four sistches tan características de la Maison: lo contrario a una etiqueta."
     },
     {
-        id: 26,
+        id: 27,
         tipo: "Accesorios",
         categoria: "Accesorios",
-        talle: [],
         color: ["Azul marino"],
         stock: true,
         img: ["img/inventario/accesorios/bandaparaelcuellodelanamerino1.jpg", "img/inventario/accesorios/bandaparaelcuellodelanamerino2.jpg", "img/inventario/accesorios/bandaparaelcuellodelanamerino3.jpg"],
@@ -423,10 +417,9 @@ let productos = [
         descripcion: "Banda para el cuello confeccionada en fina lana merino. Las Four stitches, tan emblemáticas de Maison Margiela, aparecen en la parte trasera; lo contrario a una etiqueta. "
     },
     {
-        id: 27,
+        id: 28,
         tipo: "Accesorios",
         categoria: "Accesorios",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/accesorios/bufandadecachemira1.jpg", "img/inventario/accesorios/bufandadecachemira2.jpg", "img/inventario/accesorios/bufandadecachemira3.jpg"],
@@ -438,10 +431,9 @@ let productos = [
         descripcion: "Minimalista y agradable al tacto a la vez, esta bufanda acanalada está confeccionada en pura cachemira para proporcionar calidez y suavidad. Sus bordes limpios y sus proporciones gráficas resaltan el juego entre la estructura y la simplicidad."
     },
     {
-        id: 28,
+        id: 29,
         tipo: "Accesorios",
         categoria: "Accesorios",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/accesorios/gorrodecachemira1.jpg", "img/inventario/accesorios/gorrodecachemira2.jpg", "img/inventario/accesorios/gorrodecachemira3.jpg"],
@@ -453,10 +445,9 @@ let productos = [
         descripcion: "Este gorro está confeccionado en cachemira finamente hilada con un punto acanalado clásico. El borde doblado aporta un volumen sutil, mientras que la firma de Maison Margiela, las Four sistches, aparece en la parte delantera; lo contrario a una etiqueta."
     },
     {
-        id: 29,
+        id: 30,
         tipo: "Accesorios",
         categoria: "Accesorios",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/accesorios/pañueloparalacabeza1.jpg", "img/inventario/accesorios/pañueloparalacabeza2.jpg", "img/inventario/accesorios/pañueloparalacabeza2.jpg"],
@@ -468,10 +459,9 @@ let productos = [
         descripcion: "Un básico del estilo británico, el pañuelo para la cabeza combina funcionalidad y elegancia, y ha sido utilizado históricamente tanto por la realeza como por la gente del campo. Esta versión está confeccionada en tejido repelente al agua, con un corte cónico, cierre de cremallera y capucha ajustable, lo que permite llevarlo de múltiples formas. "
     },
     {
-        id: 30,
+        id: 31,
         tipo: "Accesorios",
         categoria: "Accesorios",
-        talle: [],
         color: ["Negro"],
         stock: true,
         img: ["img/inventario/accesorios/snatcheddoll1.jpg", "img/inventario/accesorios/snatcheddoll2.jpg", "img/inventario/accesorios/snatcheddoll3.jpg"],

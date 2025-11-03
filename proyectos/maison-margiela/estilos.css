@@ -1,1247 +1,989 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Noto+Serif+SC:wght@200..900&display=swap');
 
+/* ==================================================================== */
+/* I. VARIABLES GLOBALES Y RESET */
+/* ==================================================================== */
 :root {
-  --color-texto: #1a1a1a;
-  --fondo: #fff;
-  --acento: #8f8f8f;
-  --fuente: 'Manrope', sans-serif;
-  --fuente-dos: "Noto Serif SC", serif;
-  --transicion: 0.3s ease;
-  font-size: 16px; 
+    --color-texto: #1a1a1a;
+    --fondo: #fff;
+    --acento: #8f8f8f;
+    --fuente: 'Manrope', sans-serif;
+    --fuente-dos: "Noto Serif SC", serif;
+    --transicion: 0.3s ease;
+    font-size: 16px; 
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--fuente);
-  line-height: 1.6;
-  color: var(--color-texto);
-  background-color: var(--fondo);
-  overflow-x: hidden; 
+    font-family: var(--fuente);
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--fondo);
+    /* Mantener overflow-x: hidden para evitar scroll horizontal indeseado */
+    overflow-x: hidden; 
 }
 
-
-
-
+/* Base de tipografía y enlaces */
 a {
-  text-decoration: none;
-  color: var(--color-texto);
-  transition: color var(--transicion);
+    text-decoration: none;
+    color: var(--color-texto);
+    transition: color var(--transicion);
 }
 
 a:hover {
-  color: var(--acento);
+    color: var(--acento);
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
+
+
+/* ==================================================================== */
+/* II. HEADER Y NAVEGACIÓN PRINCIPAL */
+/* ==================================================================== */
 
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0rem 3.125rem; 
-  background-color: transparent;
-  border-bottom: none;
-  z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3.125rem; 
+    background-color: transparent;
+    z-index: 10;
 }
 
-.pagina-blanca .header{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0rem 3.125rem; 
-  background-color: rgba(255, 255, 255, 0.438);
-  border-bottom: none;
-  z-index: 10;
+/* Clase para headers en páginas de fondo blanco (e.g., Catálogo, Ampliación) */
+.pagina-blanca .header {
+    position: fixed; /* Mejor fixed para el catálogo */
+    background-color: rgba(255, 255, 255, 0.9); /* Un poco más sólida */
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
-
 
 .logo img {
-  max-height: 5rem; 
-  width: auto;
-  display: block;
+    max-height: 5rem; 
+    width: auto;
 }
 
-/* Estilos para los SVGs dentro de los botones/enlaces */
-.icono {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: block;
-  position: relative;
-}
-
-/* --- Ajuste de espaciado para dispositivos Móviles (hasta 768px) --- */
-@media (max-width: 768px) {
-
-    /* Seleccionamos el contenedor de los iconos (Lupa, Usuario, Carrito, Menú) */
-    .iconos {
-        /* Aplica un margen izquierdo para empujar el bloque de iconos lejos del logo. */
-        /* Ajusta este valor (ej. 3rem) según el espacio que necesites. */
-        margin-left: 2rem; 
-    }
-    
-    /* Nota: Si el header ya usa 'justify-content: space-between', el margen puede no ser necesario, */
-    /* pero si buscas un control de espacio específico, este margen funciona. */
-}
-
-/* --- MEDIA QUERY para Mobile S (320px) --- */
-@media (max-width: 375px) { 
-    
-    /* Aumentar el tamaño del logo */
-    .header .logo img{ 
-      display: none;
-    
-    }
-
-    .iconos{
-      margin-top: 1rem;
-    }
-    
-}
-
+/* Contenedor de iconos y Buscador */
 .iconos {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem; 
-  position: relative;
-  overflow: visible;
-  z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; 
+    position: relative;
+    z-index: 50;
 }
 
 .nav-icon-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.25rem; 
-  height: 1.25rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  color: white;
-  font-size: 0.9rem; 
-}
-#contenedorSugerencias {
- position: relative;
- display: flex;
-  align-items: center; /* Asegura la alineación vertical */
-}
-
-/* Ajustes para el botón de la lupa */
-#botonLupa {
-    /* Elimina cualquier margen residual que pueda levantarlo */
-    margin: 0; 
-    /* Asegura que el contenido (el SVG) esté centrado dentro del botón */
-    display: flex; 
-    justify-content: center; 
+    width: 1.5rem; /* Ajuste el ancho para que coincida con .icono */
+    height: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: white; /* Color por defecto, debe cambiar en .pagina-blanca */
+    display: flex; /* Asegura que el SVG esté centrado */
+    justify-content: center;
     align-items: center;
-    /* Evita que el line-height lo empuje */
-    line-height: 0;
 }
 
-/* Ajustes para el input que se expande */
-#inputBuscador {
-    /* El input necesita una altura definida si la lupa la tiene */
-    /* Ya tienes: padding: 0; */
-    /* Opcional: añade vertical-align: middle; si flex falla */
-    vertical-align: middle;
+/* Estilos para los SVGs */
+.icono {
+    width: 100%; /* El SVG ocupa todo el botón */
+    height: 100%;
+    display: block;
+    position: relative;
+    /* Aplicamos el color aquí, que será sobreescrito si el header tiene fondo */
+    stroke: white; 
+    transition: stroke var(--transicion);
 }
+
+.pagina-blanca .nav-icon-item,
+.pagina-blanca .icono {
+    color: var(--color-texto);
+    stroke: var(--color-texto);
+}
+.pagina-blanca .icono:hover {
+    stroke: var(--acento);
+}
+
+
+/* ==================================================================== */
+/* III. BUSCADOR (Lupa e Input Dinámico) */
+/* ==================================================================== */
+
+#contenedorSugerencias {
+    position: relative;
+    display: flex;
+    align-items: center; 
+}
+
+/* Input (por defecto oculto) */
+#inputBuscador {
+    color: white;
+    display: none;
+    font-family: var(--fuente);
+    background-color: transparent;
+    font-size: 0.9rem; 
+    border: none;
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    border-bottom: 1px solid transparent;
+    /* Usar la clase .activo de JS para manejar el despliegue */
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+}
+
+/* ESTILO DEL INPUT ACTIVO (manejado por JS) */
+#inputBuscador.activo {
+    width: 180px;
+    opacity: 1;
+    padding: 0.3125rem 0.625rem; 
+    border-bottom-color: white;
+}
+
+#inputBuscador::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#inputBuscador:focus {
+    outline: none;
+    border-bottom: 1px solid white; /* Mantenemos el foco en blanco */
+}
+
+/* Sobreescritura de estilos para página blanca */
 .pagina-blanca #inputBuscador {
-    /* 1. Cambia el color del texto a negro */
     color: var(--color-texto); 
-    /* 2. Cambia el borde de fondo transparente a un color de texto */
-    border-bottom-color: var(--color-texto) !important; 
+    border-bottom-color: var(--color-texto) !important; /* Si necesitas override */
 }
 
 .pagina-blanca #inputBuscador::placeholder {
-    /* 3. Cambia el color del placeholder a un gris más oscuro (acento) */
     color: var(--acento); 
 }
 
 .pagina-blanca #inputBuscador:focus {
-    /* 4. Cambia el borde al hacer focus */
     border-bottom-color: var(--acento) !important;
 }
 
-/* Opcional, si usas la lista de sugerencias */
-.pagina-blanca #sugerencias {
-    color: var(--color-texto);
-    background-color: white; /* Para que la caja de sugerencias se vea bien */
-    border: 1px solid var(--acento);
-}
 
-.pagina-blanca #sugerencias {
-    /* Fondo: de transparente/oscuro a blanco */
-    background-color: var(--fondo); 
-    /* Texto: de blanco a negro */
-    color: var(--color-texto);
-    /* Borde: de blanco semi-transparente a gris/negro */
-    border: 1px solid var(--acento); 
-    /* Si el scrollbar aún se ve oscuro: */
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1); /* Sombra más clara */
-}
-
-/* Aplicamos el color negro a los elementos internos (los botones de búsqueda) */
-.pagina-blanca #sugerencias button.guardar {
-    color: var(--color-texto); /* Texto del botón a negro */
-}
-
-/* Aplicamos el hover para que no sea blanco sobre blanco */
-.pagina-blanca #sugerencias div:hover {
-    /* Hover más sutil para fondo blanco */
-    background-color: rgba(0, 0, 0, 0.05); 
-}
-
-
-
-
-#inputBuscador {
-  color: white;
-  display: none;
-  font-family: var(--fuente);
-  background-color: transparent;
-  font-size: 0.9rem; 
-  border: none;
-  width: 0;
-  opacity: 0;
-  padding: 0;
-  border-bottom: 1px solid transparent;
-  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
-}
-
-#sugerencias button.guardar {
-  width: 100%;
-  text-align: left;
-  background-color: transparent;
-  padding: 0.625rem 0.75rem; 
-  font-size: 0.9rem; 
-  color: white;
-  font-family: var(--fuente);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
+/* SUGERENCIAS DEL BUSCADOR */
 #sugerencias {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 15rem; 
-  z-index: 9999;
-  background-color: transparent;
-  color: white;
-  font-family: var(--fuente);
-  font-size: 0.8rem; 
-  font-weight: 300;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-top: none;
-  border-radius: 0 0 0.375rem 0.375rem; 
-  padding: 0.5rem 0.75rem; 
-  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
-  max-height: 17.5rem; 
-  overflow-y: auto;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+    display: none; /* Controlado por JS */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 15rem; 
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo oscuro por defecto */
+    color: white;
+    font-family: var(--fuente);
+    font-size: 0.8rem; 
+    font-weight: 300;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+    border-radius: 0 0 0.375rem 0.375rem; 
+    padding: 0.5rem 0; /* Padding vertical, padding horizontal en el botón */
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.3);
+    max-height: 17.5rem; 
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
-#sugerencias.visible {
-  display: block;
-  opacity: 1;
+#sugerencias button.guardar-producto { /* Clase actualizada para consistencia */
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    padding: 0.625rem 0.75rem; 
+    font-size: 0.9rem; 
+    color: white;
+    font-family: var(--fuente);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+#sugerencias button.guardar-producto:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-#sugerencias div {
-  padding: 0.375rem 0.5rem; 
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+/* Sobreescritura de sugerencias para página blanca */
+.pagina-blanca #sugerencias {
+    background-color: var(--fondo); 
+    color: var(--color-texto);
+    border: 1px solid var(--acento); 
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+}
+.pagina-blanca #sugerencias button.guardar-producto {
+    color: var(--color-texto);
+}
+.pagina-blanca #sugerencias button.guardar-producto:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-#sugerencias div:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
 
-#inputBuscador::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-#inputBuscador:focus {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid white;
-}
+/* ==================================================================== */
+/* IV. NAV LATERAL (MENÚ HAMBURGUESA) */
+/* ==================================================================== */
 
 #navLateral {
-  display: none;
-  font-family: var(--fuente-dos);
-  background-color: rgba(255, 255, 255, 0.118);
-  padding: 3.125rem; 
-  color: rgb(147, 146, 142);
-  font-size: 0.9rem; 
-  position: fixed;
-  top: 0;
-  right: -15.625rem; 
-  width: 15.625rem; 
-  height: 100vh; 
-  background-color: rgba(255, 255, 255, 0.8);
-  transition: left 0.3s ease;
-  z-index: 999;
-  opacity: 0;
-  transition: right 0.3s ease, opacity 0.3s ease;
-}
-
-.listaNav {
-  font-family: var(--fuente-dos);
-}
-
-.listaNav button {
-  border: none;
-  background-color: transparent;
-  font-size: 0.8rem; 
-  transition: 0.2s;
-}
-
-.listaNav button:hover {
-  border: none;
-  color: rgb(140, 135, 110);
-  ;
-}
-
-#navLateral a {
-  color: rgb(140, 135, 110);
-  text-decoration: none;
-  font-size: 0.9rem; 
-  transition: 0.3s;
-}
-
-#navLateral a:hover {
-  color: rgb(87, 83, 63);
-  text-decoration: none;
-  font-size: 0.95rem; 
-}
-
-#navLateral ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#navLateral li {
-  margin-bottom: 1.25rem; 
+    display: none;
+    font-family: var(--fuente-dos);
+    padding: 3.125rem 1.5rem; /* Ajustado el padding para el contenido */
+    color: rgb(147, 146, 142);
+    font-size: 0.9rem; 
+    position: fixed;
+    top: 0;
+    right: -15.625rem; 
+    width: 15.625rem; 
+    height: 100vh; 
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparente blanco */
+    box-shadow: -0.125rem 0 0.5rem rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    opacity: 0;
+    transition: right 0.3s ease, opacity 0.3s ease;
 }
 
 #navLateral.activo {
-  right: 0;
-  opacity: 1;
+    right: 0;
+    opacity: 1;
+    display: block; /* Asegura que se muestre al activarse */
 }
+
+/* Estilos de la lista y botones de categoría */
+.listaNav button {
+    border: none;
+    background-color: transparent;
+    font-size: 0.8rem; 
+    font-family: var(--fuente-dos);
+    color: rgb(147, 146, 142);
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.listaNav button:hover {
+    color: rgb(87, 83, 63); /* Color de hover más oscuro */
+}
+
+#navLateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navLateral li {
+    margin-bottom: 1.25rem; 
+}
+
+
+/* ==================================================================== */
+/* V. VENTANA MODAL (LOGIN/REGISTRO) */
+/* ==================================================================== */
 
 #ventanaModal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-#desplegarCarrito {
-  position: fixed;
-  top: 30;
-  left: 50%;
-  width: 40%; 
-  height: 80%; 
-  justify-content: center;
-  align-items: center;
-  background-color: red;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal-contenido {
-  background-color: white;
-  font-family: var(--fuente-dos);
-  padding: 1.875rem; 
-  border-radius: 0.75rem; 
-  max-width: 25rem; 
-  width: 90%; 
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.3); /* De 15px a rem */
-}
-
-.modal-contenido h2 {
-  font-size: 0.8rem; 
-  margin-bottom: 0;
-}
-
-.inputVentanaModal {
-  padding: 0.25rem 0.75rem; 
-  box-sizing: border-box;
-  font-size: 0.6rem; 
-  width: 100%;
-  margin-bottom: 0.5rem; 
-}
-
-.inputVentanaModal:focus {
-  outline: none;
-}
-
-.inputGrupo {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem; 
-  margin-bottom: 0.3125rem; 
-}
-
-.inputGrupo p {
-  font-size: 0.5rem; 
-  font-weight: 600;
-  color: rgb(214, 37, 37);
-  border-radius: 20%;
-  padding: 0.25rem; 
-}
-
-
-
-.botonIniciar {
-  font-family: var(--fuente);
-  background-color: #4a4a4a;
-  display: inline-block;
-  padding: 0.25rem 0.75rem; 
-  border: 1px solid #fff;
-  color: #fff;
-  font-weight: 400;
-  font-size: 0.6rem; 
-  letter-spacing: 1px;
-  transition: all var(--transicion);
-  align-items: center;
-  margin-top: 0.75rem; 
-}
-
-.botonIniciar:disabled {
-  background-color: #b0b0b0;
-  color: #848484;
-  border: none;
-  cursor: not-allowed;
-}
-
-.botonIniciar:disabled:hover {
-  background-color: #b0b0b0;
-  color: #848484;
-  border: none;
-  cursor: not-allowed;
-}
-
-.botonCrear {
-  font-family: var(--fuente);
-  display: inline-block;
-  padding: 0.25rem 0.75rem; 
-  border: 1px solid #fff;
-  color: #4a4a4a;
-  font-weight: 400;
-  font-size: 0.6rem; 
-  letter-spacing: 1px;
-  transition: all var(--transicion);
-  align-items: center;
-  margin-top: 0.5rem; 
-}
-
-.botonCrear:hover {
-  background-color: #fff;
-  color: var(--color-texto);
-}
-
-.botonIniciar:hover {
-  background-color: #fff;
-  color: var(--color-texto);
+    background-color: white;
+    font-family: var(--fuente-dos);
+    padding: 1.875rem; 
+    border-radius: 0.75rem; 
+    max-width: 25rem; 
+    width: 90%; 
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.3);
 }
 
 .encabezado-modal {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.modal-contenido h2 {
+    font-size: 1.2rem; /* Aumentado para mejor legibilidad */
+    margin-bottom: 0;
 }
 
 #botonCruz {
-  background-color: transparent;
-  width: 1rem; 
-  height: 1rem;
-  display: flex;
-  justify-content: center;
-  border: none;
-  padding: 0;
-  display: inline;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
 }
 
 #botonCruz svg {
-  width: 0.75rem; 
-  height: 0.75rem;
-  stroke: #333;
-  margin-right: 0.3125rem; 
-}
-
-.modal-contenido form {
-  display: flex;
-  margin-top: 0.75rem; 
-  flex-direction: column;
-  gap: 0.25rem; 
-}
-
-.modal-contenido button,
-.modal-contenido label {
-  width: auto;
-  box-sizing: border-box;
-  font-size: 0.6rem; 
-}
-
-.modal-contenido label {
-  margin-right: 0;
-  padding-right: 0.3125rem; 
-  margin-right: 0;
+    width: 1rem; /* Aumentado para que sea más fácil de clicar */
+    height: 1rem;
+    stroke: var(--color-texto);
 }
 
 #registrarse {
-  margin-top: 0;
-  margin-bottom: 0;
-  display: none;
+    display: none; /* Controlado por JS */
 }
 
-/* banner */
+.modal-contenido form {
+    display: flex;
+    margin-top: 0.75rem; 
+    flex-direction: column;
+    gap: 0.5rem; /* Separación entre grupos de inputs */
+}
+
+.inputVentanaModal {
+    padding: 0.5rem 0.75rem; 
+    font-size: 0.9rem; 
+    width: 100%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.inputVentanaModal:focus {
+    outline: none;
+    border-color: var(--acento);
+}
+
+.inputGrupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem; 
+}
+
+.inputGrupo p {
+    font-size: 0.7rem; 
+    font-weight: 600;
+    color: rgb(214, 37, 37); /* Color de error */
+    padding: 0; /* Limpieza */
+    margin: 0;
+}
+
+/* BOTONES DE LA MODAL */
+.botonBaseModal { /* Clase base para evitar repetir estilos comunes */
+    font-family: var(--fuente);
+    display: inline-block;
+    padding: 0.5rem 1rem; 
+    border: 1px solid transparent;
+    font-weight: 400;
+    font-size: 0.8rem; 
+    letter-spacing: 1px;
+    transition: all var(--transicion);
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
+.botonIniciar {
+    /* Hereda de .botonBaseModal */
+    background-color: #4a4a4a;
+    color: #fff;
+    border-color: #4a4a4a;
+}
+.botonIniciar:hover {
+    background-color: #fff;
+    color: var(--color-texto);
+    border-color: var(--color-texto);
+}
+
+.botonIniciar:disabled {
+    background-color: #b0b0b0;
+    color: #848484;
+    border-color: #b0b0b0;
+    cursor: not-allowed;
+}
+
+.botonCrear {
+    /* Hereda de .botonBaseModal */
+    background-color: transparent;
+    color: #4a4a4a;
+    border-color: #4a4a4a;
+}
+.botonCrear:hover {
+    background-color: #4a4a4a;
+    color: #fff;
+}
+
+
+/* ==================================================================== */
+/* VI. HOME: BANNER Y SLIDER ESTACIONAL */
+/* ==================================================================== */
 
 .banner {
-  position: relative;
-  width: 100%;
-  height: 100vh; 
-  overflow: hidden;
-  background-color: #000;
-}
-
-.bannerCatalogo {
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  width: 100%;
-  height: 16vh; 
-  background-color: transparent;
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+    background-color: #000;
 }
 
 #slider {
-  display: flex;
-  width: 100%; 
-  height: 100vh; 
-  margin-left: calc(50% - 50vw); 
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
+    width: 100%; 
+    height: 100vh; 
+    margin-left: calc(50% - 50vw); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
 }
 
-
 #slider img {
-  width: 100%;
-  height: 100%; 
-  /* Esto es clave para que la imagen no se distorsione y cubra el área */
-  object-fit: cover; 
-  display: block;
-  max-width: none; /* Asegura que no haya límites de ancho de la imagen */
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    max-width: none; 
+}
+
+.boton{
+  color: var(--fondo);
+  background-color: transparent;
+  border: 1px solid var(--fondo);
+  font-size: 0.9rem;
+  padding: 0.5rem;
+
+}
+
+.boton:hover{
+  color: var(--color-texto);
+  background-color: var(--fondo);
+  border: 1px solid var(--fondo);
+  font-size: 0.9rem;
+  padding: 0.5rem;
+
 }
 
 .textoBanner {
-  /* De 0.7em a rem */
-  font-size: 1rem; 
-  font-family: var(--fuente-dos);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  text-align: right;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  /* De 80px y 50px a rem */
-  padding-right: 5rem; 
-  padding-left: 3.125rem;
+    font-size: 1rem; 
+    font-family: var(--fuente-dos);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: right;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    padding-right: 5rem; 
+    padding-left: 3.125rem;
 }
 
-.boton,
-.botonGuardar {
-  font-family: var(--fuente);
-  display: inline-block;
-  /* De 8px 16px a rem */
-  padding: 0.5rem 1rem; 
-  border: 1px solid #fff;
-  color: #fff;
-  font-weight: 400;
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
-  letter-spacing: 1px;
-  transition: all var(--transicion);
-  align-items: center;
-  /* De 20px a rem */
-  margin-top: 1.25rem; 
-  text-decoration: none;
-}
-
-.botonAñadir {
-  background-color: transparent;
-  font-family: var(--fuente);
-  display: inline-block;
-  /* De 8px 16px a rem */
-  padding: 0.5rem 1rem; 
-  border: 1px solid #8b8b8b;
-  color: #262626;
-  font-weight: 400;
-  /* De 0.6em a rem */
-  font-size: 0.6rem; 
-  letter-spacing: 1px;
-  transition: all var(--transicion);
-  align-items: center;
-  /* De 20px a rem */
-  margin-top: 1.25rem; 
-}
-
-.botonAñadir:hover {
-  background-color: #fff;
-  border: 1px solid #fff;
-  color: var(--color-texto);
-}
-
-.boton:hover {
-  background-color: #fff;
-  color: var(--color-texto);
-}
-
-/* article por date */
-
+/* SLIDER DE COLECCIÓN ESTACIONAL */
 #galeria-container {
-  overflow: hidden;
-  background-color: transparent;
-  /* De 20px 0 a rem */
-  padding: 1.25rem 0; 
-  /* De 24px a rem */
-  margin-bottom: 1.5rem; 
+    overflow: hidden;
+    padding: 1.25rem 0; 
+    margin-bottom: 1.5rem; 
 }
-
 
 .galeria-slider {
-  display: flex;
-  width: max-content;
-  animation: deslizar 50s linear infinite;
+    display: flex;
+    width: max-content;
+    animation: deslizar 50s linear infinite;
 }
 
 .articulo {
-  flex: 0 0 auto;
-  font-family: var(--fuente-dos);
-  width: 12.5rem; 
-  margin: 0 0.625rem; 
-  background-color: transparent;
+    flex: 0 0 auto;
+    font-family: var(--fuente-dos);
+    width: 12.5rem; 
+    margin: 0 0.625rem; 
+    background-color: transparent;
     font-weight: 400;
-  margin-bottom: 0.3125rem; 
-  border-radius: 0.75rem; 
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
-  transition: transform 0.3s;
+    margin-bottom: 0.3125rem; 
+    border-radius: 0.75rem; 
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s;
 }
 
 .articulo:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .articulo img {
-  width: 100%;
-  height: 15.5rem; 
-  object-fit: cover;
-  border-top-left-radius: 0.75rem; 
-  border-top-right-radius: 0.75rem;
-
+    width: 100%;
+    height: 15.5rem; 
+    object-fit: cover;
+    border-top-left-radius: 0.75rem; 
+    border-top-right-radius: 0.75rem;
 }
 
 .articulo .info {
-  padding: 0.625rem; 
+    padding: 0.625rem; 
 }
 
 .articulo h5 {
-  font-size: 0.6rem;
-  margin-bottom: 0.4rem;
+    font-size: 0.6rem;
+    margin-bottom: 0.4rem;
 }
 
 .articulo .titulo {
-  font-size: 0.9rem; 
-  font-weight: bold;
-  margin-bottom: 0.3125rem; 
-  /* 1. Evita que el texto salte a una nueva línea */
+    font-size: 0.9rem; 
+    font-weight: bold;
+    margin-bottom: 0.3125rem; 
     white-space: nowrap; 
-
-    /* 2. Oculta cualquier contenido que desborde el contenedor */
     overflow: hidden; 
-
-}
-
-.articulo .boton {
-  color: #000;
+    text-overflow: ellipsis; /* Añadido para mejor UX */
 }
 
 .articulo .precio {
-  font-weight: 600;
-  font-size: 0.7rem;
+    font-weight: 600;
+    font-size: 0.7rem;
 }
+
+.articulo .boton { /* Botón de 'Ver más' en el slider */
+    color: var(--color-texto);
+    border-color: var(--color-texto);
+    margin-top: 0.75rem; /* Ajustado */
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.articulo .boton:hover {
+    background-color: var(--color-texto);
+    color: #fff;
+}
+
 
 @keyframes deslizar {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Necesario por la duplicación en JS */
+    }
 }
 
-.destacados {
-  padding: 5rem 5rem; 
-  text-align: left;
-  background-color: #fff;
-  width: 100%;
-  box-sizing: border-box;
+
+/* ==================================================================== */
+/* VII. PRODUCTOS (Destacados y Catálogo) */
+/* ==================================================================== */
+
+.destacados,
+.destacadosCatalogo {
+    padding: 5rem 5rem; 
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    /* Eliminar background-color: #fff; si el body ya lo tiene */
 }
+
+/* ESTILOS DE CADA TARJETA DE PRODUCTO */
+.producto {
+    width: 100%; /* El width lo da la columna de Bootstrap */
+    padding: 0.9375rem; 
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform var(--transicion), box-shadow var(--transicion);
+    background-color: transparent;
+}
+
+.producto:hover {
+    transform: translateY(-0.3125rem); 
+}
+
+/* IMAGEN DEL PRODUCTO */
+.producto img {
+    max-width: 100%;
+    height: auto;
+    object-fit: fill;
+    margin-bottom: 0;
+    border-radius: 0.5rem; 
+    border: none;
+}
+
+/* CONTENEDOR DEL TEXTO Y BOTÓN (Overlay) */
+.info-producto {
+    font-family: var(--fuente-dos);
+    position: absolute;
+    border-radius: 0.5rem; 
+    width: calc(100% - 1.875rem); /* 100% - padding horizontal (0.9375rem * 2) */
+    height: calc(100% - 1.875rem);
+    padding: 0.9375rem 1.25rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4); /* Oscurecido ligeramente */
+    color: white;
+    transition: background-color var(--transicion);
+}
+
+.producto:hover .info-producto {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Títulos y Párrafos dentro del overlay */
+.producto h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem; 
+    margin-top: 0;
+    color: inherit;
+}
+
+.producto p {
+    font-size: 0.8rem; 
+    color: inherit;
+    margin-bottom: 0.9375rem; 
+    font-weight: 600;
+}
+
+/* Botón 'Ver más' dentro del overlay */
+.producto .info-producto .boton {
+    border-color: white;
+    color: white;
+    background-color: transparent;
+    font-size: 0.7rem; /* Consistencia de fuente */
+    padding: 0.4rem 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.producto .info-producto .boton:hover {
+    background-color: white;
+    color: black;
+}
+
+/* SELECT DE ORDENAMIENTO (Catálogo) */
+#selectProductos {
+    font-family: var(--fuente-dos);
+    font-size: 0.8rem; 
+    padding: 0.6rem; 
+    border: 1px solid grey;
+    border-radius: 0.25rem; 
+    margin: 2rem 2rem 2rem 0; /* Ajuste: Margen solo a la derecha del select */
+}
+
+#selectProductos:focus {
+    outline: none;
+    border-color: var(--acento);
+}
+
+/* BREADCRUMB (Catálogo) */
+.breadcrumb {
+    /* Usado para la página de Catálogo */
+    font-family: var(--fuente-dos);
+    font-size: 0.8rem; 
+    margin-top: 2rem; 
+    padding: 0 1.25rem;
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+.breadcrumb a {
+    color: var(--acento);
+}
+
+
+/* ==================================================================== */
+/* VIII. PRODUCTO AMPLIADO (Página ampliacion.html) */
+/* ==================================================================== */
 
 #ampliacion {
-  display: flex;
-  margin-top: 18.75rem; 
-  gap: 0.625rem; 
-  width: 100%;
-  max-width: 75rem; 
-  margin: 3.125rem auto; 
-  padding: 0 1.25rem; 
-  justify-content: center;
-  box-sizing: border-box;
-  padding: 2.5rem 1.25rem; 
-  background-color: var(--fondo);
+    /* Contenedor principal de la página */
+    max-width: 75rem; 
+    margin: 5rem auto 3.125rem; /* Ajustado el margen superior */
+    padding: 2.5rem 1.25rem; 
+    box-sizing: border-box;
 }
 
-/* Contenedor principal del producto ampliado */
 #productoAmpliado {
-  display: flex;
-  font-family: var(--fuente-dos);
-  color: black;
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* De 40px a rem */
-  gap: 2.5rem; 
-  /* De 24px a rem */
-  padding: 1.5rem; 
-  background-color: rgba(255, 255, 255, 0.195);
-  /* De 12px a rem */
-  border-radius: 0.75rem; 
-  /* De 1200px a rem */
-  max-width: 75rem; 
-  margin: auto;
-}
-
-#selectTalles {
-  display: block;
-  font-family: var(--fuente-dos);
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
-  outline: none;
-  /* Mantenemos % */
-  width: 16%; 
-}
-
-/* Imagen principal */
-.imagen-grande {
-  width: 100%;
-  /* De 400px a rem */
-  max-height: 25rem; 
-  object-fit: contain;
+    display: flex;
+    font-family: var(--fuente-dos);
+    color: var(--color-texto);
+    flex-wrap: wrap;
+    gap: 2.5rem; 
+    padding: 1.5rem; 
+    background-color: #f7f7f7; /* Fondo sutil para la caja */
+    border-radius: 0.75rem; 
+    max-width: 100%;
+    margin: auto;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
 }
 
 .columna-imagen {
-  flex: 1;
-  /* De 300px a rem */
-  min-width: 18.75rem; 
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  /* De 1rem a rem (correcto) */
-  gap: 1rem; 
+    flex: 1;
+    min-width: 18.75rem; 
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem; 
 }
 
+.imagen-grande {
+    width: 100%;
+    max-height: 25rem; 
+    object-fit: contain;
+}
 
 .columna-detalles {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  /* De 12px a rem */
-  gap: 0.75rem; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Aumentado a 1rem para mejor separación */
+    min-width: 18.75rem;
 }
 
 /* Miniaturas */
 .galeria-miniaturas {
-  display: flex;
-  flex-direction: column;
-  /* De 10px a rem */
-  gap: 0.625rem; 
-  /* De 12px a rem */
-  margin-top: 0.75rem; 
-}
-
-/* Estilos para el contenedor principal de los breadcrumbs */
-.breadcrumb {
-  list-style: none;
-  /* De 10px 15px a rem */
-  padding: 0.625rem 0.9375rem; 
-  background-color: none;
-  /* De 5px a rem */
-  border-radius: 0.3125rem; 
-  /* De 32px a rem */
-  margin-top: 2rem; 
-  /* De 12px a rem */
-  margin-left: 0.75rem; 
-  display: flex;
-  flex-wrap: wrap;
-  font-family: var(--fuente-dos);
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
-}
-
-/* Estilos para cada elemento (link o texto) del breadcrumb */
-.breadcrumb li {
-  display: flex;
-  align-items: center;
-}
-
-/* Estilos para el separador entre elementos */
-.breadcrumb li+li::before {
-  content: '>';
-  /* De 0 8px a rem */
-  margin: 0 0.5rem; 
-  color: #6c757d;
-  font-weight: bold;
-}
-
-/* Estilos para los enlaces */
-.breadcrumb a {
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.breadcrumb a:hover {
-  text-decoration: none;
-}
-
-/* Estilo para el último elemento (la página actual) */
-.breadcrumb .active {
-  color: #6c757d;
-  font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem; 
+    margin-top: 0.75rem; 
 }
 
 .galeria-miniaturas img {
-  /* De 80px a rem */
-  width: 5rem; 
-  height: 5rem;
-  object-fit: cover;
-  /* De 6px a rem */
-  border-radius: 0.375rem; 
-
-  cursor: pointer;
-  transition: transform 0.2s;
+    width: 5rem; 
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 0.375rem; 
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
 }
-
-
-/* --- MEDIA QUERY PARA DISPOSITIVOS MÓVILES Y TABLETS PEQUEÑAS --- */
-@media (max-width: 425px) { /* Ajusta el max-width según tu definición de "Mobile M" si es diferente */
-    
-    /* 1. Columna de Imagen (imagen grande + miniaturas) */
-    #productoAmpliado .columna-imagen {
-        flex-direction: column; /* Apila los elementos: imagen grande arriba, miniaturas abajo */
-        min-width: 100%; /* Ocupa todo el ancho disponible */
-        gap: 0.75rem; 
-        align-items: center; /* Centra la imagen grande y las miniaturas */
-    }
-
-    /* 2. Contenedor de las Miniaturas */
-    .galeria-miniaturas {
-        display: flex; /* Asegura que sea flex */
-        flex-direction: row; /* Las miniaturas van en fila */
-        justify-content: center; /* Centra las miniaturas horizontalmente */
-        width: 100%; /* El contenedor de miniaturas ocupa todo el ancho */
-        order: 2; /* OPCIONAL: Coloca las miniaturas debajo de la imagen grande */
-        padding: 0.5rem 0; /* Un poco de padding arriba/abajo */
-    }
-
-    /* 3. La Imagen Grande */
-    .imagen-grande {
-        order: 1; /* OPCIONAL: Coloca la imagen grande arriba */
-        width: 100%; /* La imagen grande ocupa todo el ancho */
-        max-height: 50vh; /* Limita la altura de la imagen grande para que no ocupe toda la pantalla */
-        object-fit: contain; /* Para que la imagen grande se vea completa sin recortar */
-        background-color: transparent; /* Fondo si la imagen no llena todo el espacio */
-    }
-
-    /* 4. CLAVE: Cada Miniatura (el 'img' en sí) */
-    .galeria-miniaturas img {
-        width: 4.5rem; /* Un tamaño ligeramente mayor para Mobile M */
-        height: 4.5rem; /* Forzamos una altura igual para que sea un cuadrado */
-        
-        /* MUY IMPORTANTE: Usamos 'cover' para que la imagen LLENE el cuadrado. */
-        /* Esto significa que los bordes largos (arriba/abajo) se recortarán, */
-        /* pero la imagen no se deformará y se verá a un tamaño decente. */
-        object-fit: cover; 
-        
-        display: block; /* Asegura que se comporte como un bloque */
-        padding: 0; /* Elimina cualquier padding interno */
-        margin: 0 0.25rem; /* Espacio horizontal entre miniaturas */
-        
-        border: 1px solid var(--acento); /* Un borde para definir visualmente cada miniatura */
-        background-color: var(--fondo); /* Un fondo si la imagen no llena exactamente */
-        border-radius: 0.375rem;
-    }
-}
-
 
 .galeria-miniaturas img:hover {
-
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-/* Detalles del producto */
-.detalles-producto {
-  display: flex;
-  flex-direction: column;
-  /* De 12px a rem */
-  gap: 0.75rem; 
-}
-
+/* Detalles */
 .detalles-producto h2 {
-  /* De 1.5em a rem */
-  font-size: 1.5rem; 
-  margin: 0;
-  color: #333;
+    font-size: 1.5rem; 
+    margin: 0;
+    color: var(--color-texto);
 }
 
 .detalles-producto .precio {
-  /* De 1em a rem */
-  font-size: 1rem; 
-  font-weight: bold;
-  color: #313131;
+    font-size: 1.2rem; /* Ajustado */
+    font-weight: bold;
+    color: var(--color-texto);
 }
 
 .detalles-producto .info-secundaria {
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
-  color: #666;
+    font-size: 0.8rem; /* Ajustado */
+    color: #666;
 }
 
 .detalles-producto .descripcion {
-  margin-top: 0;
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
-  line-height: 1.6;
-  text-align: center;
-  color: #444;
+    font-size: 0.8rem; 
+    line-height: 1.6;
+    text-align: left;
+    color: #444;
+}
+
+#selectTalles {
+    font-family: var(--fuente-dos);
+    font-size: 0.8rem; 
+    outline: none;
+    width: 30%; /* Aumentado a 30% para mejor visibilidad */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.botonAñadir {
+    background-color: transparent;
+    font-family: var(--fuente);
+    padding: 0.5rem 1rem; 
+    border: 1px solid var(--color-texto);
+    color: var(--color-texto);
+    font-weight: 400;
+    font-size: 0.7rem; 
+    letter-spacing: 1px;
+    transition: all var(--transicion);
+    margin-top: 1.25rem; 
+}
+
+.botonAñadir:hover {
+    background-color: var(--color-texto);
+    color: #fff;
+    border-color: var(--color-texto);
 }
 
 
-.destacadosCatalogo {
-  /* De 80px 80px a rem */
-  padding: 5rem 5rem; 
-  text-align: left;
-  background-color: #fff;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.breadcrumb ul {
-  list-style: none;
-  display: flex;
-  /* De 5px a rem */
-  gap: 0.3125rem; 
-  padding: 0;
-  /* De 40px a rem */
-  margin: 2.5rem; 
-  /* De 14px a rem */
-  font-size: 0.875rem; 
-}
-
-.breadcrumb li a {
-  text-decoration: none;
-  color: #333;
-}
-
-.breadcrumb li a:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb li {
-  color: #666;
-}
-
-/* Contenedor principal de los productos */
-
-
-/* ESTILOS DE CADA TARJETA DE PRODUCTO */
-.producto {
-  /* De 300px a rem. Considerar el cambio en #productos. Lo dejo en rem */
-  width: 15rem; 
-  /* De 15px a rem */
-  padding: 0.9375rem; 
-  height: auto;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform var(--transicion), box-shadow var(--transicion);
-  background-color: transparent;
-
-}
-
-.producto:hover {
-  /* De -5px a rem */
-  transform: translateY(-0.3125rem); 
-
-}
-
-/* IMAGEN DEL PRODUCTO (ahora ocupa toda la tarjeta) */
-.producto img {
-  max-width: 100%;
-  height: auto;
-  object-fit: fill;
-  margin-bottom: 0;
-  /* De 8px a rem */
-  border-radius: 0.5rem; 
-
-
-  border: none;
-}
-
-/* CONTENEDOR DEL TEXTO Y BOTÓN (se superpone a la imagen) */
-.info-producto {
-  /* De 0.6em a rem */ 
-  font-family: var(--fuente-dos);
-  position: absolute;
-  /* De 8px a rem */
-  border-radius: 0.5rem; 
-
-  width: 88%;
-  height: 91%;
-  /* De 15px 20px a rem */
-  padding: 0.9375rem 1.25rem; 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.232);
-  color: white;
-
-}
-
-.producto:hover .info-producto {
-  background-color: rgba(0, 0, 0, 0);
-}
-
-#selectProductos {
-  font-family: var(--fuente-dos);
-  /* De 0.55em a rem */
-  font-size: 0.55rem; 
-  /* De 0.6em a rem */
-  padding: 0.6rem; 
-  border: 1px solid grey;
-  /* De 4px a rem */
-  border-radius: 0.25rem; 
-  /* De 32px a rem */
-  margin-top: 2rem; 
-  margin-bottom: 2rem;
-  margin-left: 2rem;
-}
-
-#selectProductos:focus {
-  outline: none;
-  border-color: none;
-  box-shadow: 0 0 0 0.0625rem rgba(0, 123, 255, 0.25);
-} 
-
-/* ESTILOS DEL BOTÓN DENTRO DEL OVERLAY */
-.producto .info-producto .boton {
-  border-color: white;
-  color: white;
-  background-color: transparent;
-}
-
-.producto .info-producto .boton:hover {
-  background-color: white;
-  color: black;
-}
-
-/* ESTILOS DE TÍTULOS Y PÁRRAFOS DENTRO DEL OVERLAY */
-
-
-.producto h3 {
-  font-family: var(--secondary-font);
-  /* De 1.4em a rem */
-
-  /* De 8px a rem */
-  margin-bottom: 0.5rem; 
-  margin-top: 0;
-  color: inherit;
-}
-
-
-
-.producto p {
-  /* De 1.1em a rem */
-  font-size: 1rem; 
-  color: inherit;
-  /* De 15px a rem */
-  margin-bottom: 0.9375rem; 
-  font-weight: 600;
-}
-
-
-
-
+/* ==================================================================== */
+/* IX. FOOTER */
+/* ==================================================================== */
 
 .footer {
-  background-color: #1a1a1a;
-  color: #f8f8f8;
-  /* De 60px 50px 30px a rem */
-  padding: 3.75rem 3.125rem 1.875rem; 
-  /* De 0.7em a rem */
-  font-size: 0.7rem; 
-  /* De 92px a rem */
-  margin-top: 5.75rem; 
+    background-color: #1a1a1a;
+    color: #f8f8f8;
+    padding: 3.75rem 3.125rem 1.875rem; 
+    font-size: 0.7rem; 
+    margin-top: 5.75rem; 
 }
 
 .footer-columnas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  /* De 40px a rem */
-  gap: 2.5rem; 
-  /* De 1200px a rem */
-  max-width: 75rem; 
-  /* De 50px a rem */
-  margin: 0 auto 3.125rem; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2.5rem; 
+    max-width: 75rem; 
+    margin: 0 auto 3.125rem; 
 }
 
 .footer-col {
-  flex: 1;
-  /* De 200px a rem */
-  min-width: 12.5rem; 
+    flex: 1;
+    min-width: 12.5rem; 
 }
 
 .footer-col h3 {
-  font-family: var(--fuente-dos);
-  /* De 0.8em a rem */
-  font-size: 0.8rem; 
-  /* De 20px a rem */
-  margin-bottom: 1.25rem; 
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  /* De 10px a rem */
-  padding-bottom: 0.625rem; 
+    font-family: var(--fuente-dos);
+    font-size: 0.8rem; 
+    margin-bottom: 1.25rem; 
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.625rem; 
 }
 
 .footer-col ul li {
-  /* De 10px a rem */
-  margin-bottom: 0.625rem; 
+    margin-bottom: 0.625rem; 
 }
 
 .footer-col ul li a {
-  color: #ccc;
-  transition: color var(--transicion);
+    color: #ccc;
 }
 
 .footer-col ul li a:hover {
-  color: #fff;
+    color: #fff;
 }
 
+/* Newsletter */
 .newsletter {
-  display: flex;
-  flex-direction: column;
-  /* De 10px a rem */
-  gap: 0.625rem; 
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem; 
 }
 
 .newsletter input[type="email"] {
-  /* De 12px a rem */
-  padding: 0.75rem; 
-  border: 1px solid #333;
-  background-color: #1a1a1a;
-  color: #fff;
-  /* De 0.8em a rem */
-  font-size: 0.8rem; 
-  width: 100%;
+    padding: 0.75rem; 
+    border: 1px solid #333;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 0.8rem; 
+    width: 100%;
 }
 
 .newsletter input[type="email"]::placeholder {
-  color: #aaa;
+    color: #aaa;
 }
 
 .newsletterBoton {
-  background-color: #1a1a1a;
-  color: #fff;
-  border: 1px solid #333;
-  /* De 12px 20px a rem */
-  padding: 0.75rem 1.25rem; 
-  cursor: pointer;
-  /* De 0.8em a rem */
-  font-size: 0.8rem; 
-  font-weight: 200;
-  transition: 0.2s;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 0.75rem 1.25rem; 
+    cursor: pointer;
+    font-size: 0.8rem; 
+    font-weight: 200;
+    transition: 0.2s;
 }
 
 .newsletterBoton:hover {
-  background-color: #fff;
-  color: #1a1a1a;
+    background-color: #fff;
+    color: #1a1a1a;
 }
 
 .creditos {
-  /* De 0.6em a rem */
-  font-size: 0.6rem; 
+    font-size: 0.6rem; 
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
 }
 
-#numeroCarrito {
-  display: none;
-  font-family: var(--fuente-dos);
-  /* De 6px a rem */
-  font-size: 0.375rem; 
-  /* De 10px a rem */
-  width: 0.625rem; 
-  height: 0.625rem;
-  background-color: red;
-  border-radius: 50%;
-  text-align: center;
-  color: #fff;
-  position: fixed;
-  /* De 28px a rem */
-  top: 1.75rem; 
-  /* De 104px a rem */
-  right: 6.5rem; 
+
+/* ==================================================================== */
+/* X. MEDIA QUERIES */
+/* ==================================================================== */
+
+/* Tablet y Móvil */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 1rem; 
+    }
+    .destacados,
+    .destacadosCatalogo {
+        padding: 2rem 1rem; 
+    }
+    .footer {
+        padding: 2.5rem 1.5rem 1rem;
+    }
+    .footer-columnas {
+        justify-content: flex-start;
+    }
+    .footer-col {
+        min-width: 45%; 
+    }
+}
+
+/* Móvil S (375px o menos) */
+@media (max-width: 375px) { 
+    /* El logo se oculta */
+    .header .logo img{ 
+        display: none;
+    }
+    /* Mantenemos la separación entre iconos (si es necesaria) */
+    .iconos{
+        margin-top: 1rem;
+    }
+}
+
+/* Producto Ampliado (Móvil) */
+@media (max-width: 425px) { 
+    #productoAmpliado .columna-imagen {
+        flex-direction: column; 
+        min-width: 100%; 
+        gap: 0.75rem; 
+        align-items: center; 
+    }
+    .galeria-miniaturas {
+        flex-direction: row; 
+        justify-content: center; 
+        width: 100%; 
+        order: 2; 
+        padding: 0.5rem 0; 
+    }
+    .imagen-grande {
+        order: 1; 
+        width: 100%; 
+        max-height: 50vh; 
+        object-fit: contain; 
+    }
+    .galeria-miniaturas img {
+        width: 4.5rem; 
+        height: 4.5rem; 
+        object-fit: cover; 
+        margin: 0 0.25rem; 
+        border: 1px solid var(--acento); 
+        background-color: var(--fondo); 
+    }
+    .columna-detalles {
+        min-width: 100%;
+    }
 }

@@ -1,123 +1,141 @@
-//funcion de slider randomico
+// ====================================================================
+// 1. FUNCIONALIDAD DE SLIDER RANDOM
+// ====================================================================
 
 const slider = () => {
-
-    let random = Math.floor(Math.random() * imagenesSlider.length)
+    // Usamos 'const' ya que 'random' no se reasigna, solo se declara aquí.
+    const random = Math.floor(Math.random() * imagenesSlider.length);
     document.querySelector("#slider").innerHTML = `
-    <img src="img/${imagenesSlider[random]}">`
-}
+        <img src="img/${imagenesSlider[random]}" alt="Banner aleatorio de la colección">`; // Añadimos 'alt' por accesibilidad.
+};
 
-slider()
+slider();
 
 
-////////////////////////////////////////////////////////////////////////////////////
-//SECCION destacados randomicos
+// ====================================================================
+// 2. SECCIÓN DESTACADOS RANDOM Y LÓGICA DE EVENTOS (Refactorizada)
+// ====================================================================
 
-let seccionProductos = document.querySelector("#productos")
+const seccionProductos = document.querySelector("#productos");
 
 const mostrarProductosRandom = () => {
-    productosMostrar = "";
+    let productosMostrar = ""; // Declaramos con 'let' en lugar de usar una variable global implícita.
 
-    let productosDestacados = productos.filter(e => e.destacados);
-    let copiaDestacados = productosDestacados.slice();
+    const productosDestacados = productos.filter(e => e.destacados);
+    const copiaDestacados = productosDestacados.slice();
     let contador = 0;
 
     while (copiaDestacados.length > 0 && contador < 8) {
-        let posRandom = Math.floor(Math.random() * copiaDestacados.length);
-        let productoSacado = copiaDestacados.splice(posRandom, 1)[0];
+        const posRandom = Math.floor(Math.random() * copiaDestacados.length);
+        const productoSacado = copiaDestacados.splice(posRandom, 1)[0];
 
         productosMostrar += `
-    <div class="col-12 col-sm-6 col-lg-3 mb-4">
-        <div class="producto">
-             <img src="${productoSacado.img[1]}" alt="foto producto">
-             <div class="info-producto">
-                 <h6>destacados</h6>
-                 <h6>${productoSacado.nombre}</h6>
-                 <p>$${productoSacado.precio}</p>
-                 <button class="boton guardar" id="${productoSacado.id}">Ver más</button>
-             </div>
-        </div>
-    </div>
-`;
+            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                <div class="producto">
+                    <img src="${productoSacado.img[1]}" alt="Foto de ${productoSacado.nombre}">
+                    <div class="info-producto">
+                        <h6>Destacados</h6>
+                        <h6>${productoSacado.nombre}</h6>
+                        <p>$${productoSacado.precio}</p>
+                        <button class="boton guardar-producto" data-id="${productoSacado.id}">Ver más</button>
+                    </div>
+                </div>
+            </div>
+        `;
 
         contador++;
     }
 
-    seccionProductos.innerHTML = productosMostrar
+    seccionProductos.innerHTML = productosMostrar;
+};
 
-}
-
+// Llamamos a la función de renderizado.
 mostrarProductosRandom();
 
-//botones cliqueables para ampliar
-let botonesSugerencias = document.querySelectorAll(".guardar");
 
-botonesSugerencias.forEach((unBoton) => {
-    unBoton.addEventListener("click", (evento) => {
-        let idElementoQueQuieroGuardar = parseInt(evento.currentTarget.id);
-        idElementoQueQuieroGuardar = parseInt(idElementoQueQuieroGuardar);
-        let productoGuardar = productos.find(e => { return e.id === idElementoQueQuieroGuardar });
+// ====================================================================
+// 3. COLECCIÓN ESTACIONAL (Detección y Duplicación para Slider)
+// ====================================================================
 
-        window.location.href = `ampliacion.html?id=${encodeURIComponent(productoGuardar.id)}`;
-    })
+const getEstacion = () => {
+    const fechaActual = new Date();
+    // getMonth() devuelve 0 (Enero) a 11 (Diciembre)
+    const numeroMes = fechaActual.getMonth();
 
-})
-
-///////////////////////////////////////////////////////////////////////////////////////
-//coleccion estacional segun mes 
-
-let estacion = "";
-
-const fecha = () => {
-    let fechaActual = new Date();
-    let numeroMes = fechaActual.getMonth();
-
-    if (numeroMes === 8 || numeroMes === 9 || numeroMes === 10 || numeroMes === 11 || numeroMes === 0 || numeroMes === 1) {
-        estacion = "Primavera-Verano";
-    }
-    else {
-        estacion = "Otoño-Invierno"
+    // Nota: Usamos el formato "Primavera Verano" para coincidir con tu datos.js
+    if (numeroMes >= 8 || numeroMes <= 1) { // 8=Sept a 11=Dic, 0=Ene, 1=Feb
+        return "Primavera Verano";
+    } else {
+        return "Otoño Invierno";
     }
 }
 
-fecha()
+// Obtenemos la estación y la guardamos en una constante local.
+const estacionActual = getEstacion();
 
-document.querySelector(".textoEstacion").textContent = "Colección " + estacion; //texto en slider
+// Texto en slider (se ejecuta después de obtener la estación)
+document.querySelector(".textoEstacion").textContent = "Colección " + estacionActual;
 
-//filtro el array productos segun coleccion, luego recorro el nuevo array coleccionEstacion y armo los articulos
+
+// Filtro el array productos según coleccion y duplica el HTML para la animación infinita
 const mostrarxTemporada = () => {
-    let contenido = "";
-    let coleccionEstacion = productos.filter(e => e.coleccion=estacion);
-    coleccionEstacion.forEach(element => {
-        contenido += ` <div class="articulo">
-        <img src="${element.img[0]}" alt="Artículo 3" />
-        <div class="info">
-        <h5>${element.coleccion}</h5>
-          <div class="titulo">${element.nombre}</div>
-          <div class="precio">$${element.precio}</div>
-          <button class="boton guardarTemp" id="${element.id}">Ver más</button>
-        </div>
-      </div> `
+    // let contenidoHTML = ""; // Ya no es necesario si usamos map/join
+    
+    // ¡CORRECCIÓN CLAVE! Usamos '===' para comparar, no '=' para asignar.
+    const coleccionEstacion = productos.filter(e => e.coleccion === estacionActual); 
+    
+    // 1. Generación del HTML de la colección (Bloque Original)
+    const contenidoOriginal = coleccionEstacion.map(element => {
+        return ` 
+            <div class="articulo">
+                <img src="${element.img[0]}" alt="Artículo de la colección ${element.coleccion}" />
+                <div class="info">
+                    <h5>${element.coleccion}</h5>
+                    <div class="titulo">${element.nombre}</div>
+                    <div class="precio">$${element.precio}</div>
+                    <button class="boton guardar-producto" data-id="${element.id}">Ver más</button>
+                </div>
+            </div> 
+        `;
+    }).join(''); // Convertimos el array de strings en un solo string
 
-    });
+    // 2. DUPLICAMOS EL CONTENIDO (Clave para el efecto de scroll infinito y rápido)
+    const contenidoHTML = contenidoOriginal + contenidoOriginal;
 
-    //muestro articulos 
-    document.querySelector(".galeria-slider").innerHTML = contenido;
+    // Muestro artículos
+    document.querySelector(".galeria-slider").innerHTML = contenidoHTML;
 }
 
-mostrarxTemporada()
+mostrarxTemporada();
 
-//botones cliqueables para ampliar
 
-let botonesTemporada = document.querySelectorAll(".guardarTemp");
+// ====================================================================
+// 4. LÓGICA DE BOTONES CENTRALIZADA (DRY)
+// ====================================================================
 
-botonesTemporada.forEach((unBoton) => {
-    unBoton.addEventListener("click", (evento) => {
-        let idElementoQueQuieroGuardar = parseInt(evento.currentTarget.id);
-        idElementoQueQuieroGuardar = parseInt(idElementoQueQuieroGuardar);
-        let productoGuardar = productos.find(e => { return e.id === idElementoQueQuieroGuardar });
+// Creamos una función que maneja el click de forma genérica.
+const manejarClickProducto = (evento) => {
+    // Usamos dataset.id para obtener el valor del atributo data-id, más limpio que currentTarget.id
+    const idProducto = parseInt(evento.currentTarget.dataset.id); 
+    
+    // Buscamos el producto
+    const productoGuardar = productos.find(e => e.id === idProducto);
 
-        window.location.href = `ampliacion.html?id=${encodeURIComponent(productoGuardar.id)}`;
-    })
+    // Verificación de seguridad (buena práctica)
+    if (productoGuardar) {
+        window.location.href = `ampliacion.html?id=${encodeURIComponent(idProducto)}`;
+    } else {
+        console.error("Error: Producto no encontrado con ID:", idProducto);
+    }
+};
 
-})
+// Seleccionamos *todos* los botones relevantes (destacados y temporada)
+// Les dimos la clase común 'guardar-producto' en el HTML generado.
+// setTimeout asegura que el DOM se haya renderizado antes de buscar los botones.
+setTimeout(() => {
+    const todosLosBotones = document.querySelectorAll(".guardar-producto");
+    
+    todosLosBotones.forEach((unBoton) => {
+        unBoton.addEventListener("click", manejarClickProducto);
+    });
+}, 0); // La ejecución diferida asegura que los botones dinámicos existan.
