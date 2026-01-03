@@ -67,11 +67,11 @@ box-shadow: none;
 .navbar li a{
 color: var(--color-oscuro);
 text-decoration: none;
+transition: 0.2s;
 }
 
 .navbar li a:hover{
 font-weight: bold;
-transition: 0.2s;
 color: var(--color-oscuro);
 }
 
